@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+pydantic[email]
+sqlalchemy
+alembic
+python-multipart
+passlib[bcrypt]
+python-jose[cryptography]
+psycopg2-binary
+# Optional dependencies for testing

@@ -1,0 +1,40 @@
+.flex {
+    display: flex;;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-center-all {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}   
+
+.flex-algin-center {
+    align-items: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.gap-4 {
+    gap: 4px
+}

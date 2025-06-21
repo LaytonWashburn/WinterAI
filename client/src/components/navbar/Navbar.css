@@ -1,0 +1,5 @@
+#navbar {
+    width: 100%;
+    height: clamp(50px, 10vh, 75px);
+}
+
