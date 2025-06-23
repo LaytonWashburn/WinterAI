@@ -8,4 +8,5 @@ python-multipart
 passlib[bcrypt]
 python-jose[cryptography]
 psycopg2-binary
+minio 
 # Optional dependencies for testing

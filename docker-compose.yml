@@ -1,6 +1,8 @@
 volumes:
   client_node_modules:
   pg_data:
+  # redis_data:
+  minio_data:
 services:
   client:
     build:
@@ -13,7 +15,6 @@ services:
       - "5173:5173"
     env_file:
       - ./client/.env
-
   server:
     build:
       context: ./server
@@ -24,6 +25,7 @@ services:
       - "8000:8000"
     env_file:
       - ./server/.env
+      - ./.minio.env
   postgres:
     image: postgres:latest
     ports:
@@ -33,17 +35,19 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   minio:
-    image: minio/minio
-    ports:
-      - "9000:9000"
+    image: quay.io/minio/minio
+    container_name: minio
+    command: server /data --console-address ":9001"
     env_file:
-      - ./minio/.env
+    - .minio.env
     volumes:
-      - ./minio/data:/data
-    restart: always
-  redis:
-    image: redis:latest
+      - minio_data:/data
     ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
+      - 9000:9000
+      - 9001:9001
+  # redis:
+  #   image: redis:latest
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data

@@ -1,5 +1,10 @@
 #navbar {
     width: 100%;
-    height: clamp(50px, 10vh, 75px);
+    height: clamp(50px, 10vh, 85px);
+    background-color: white;
+}
+
+#profile-pic{
+    border-radius: 50%;
 }
 

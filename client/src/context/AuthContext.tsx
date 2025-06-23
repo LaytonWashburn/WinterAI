@@ -14,7 +14,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [token, setToken] = useState<string | null>(() => localStorage.getItem('token'));
   const [user, setUser] = useState<any>(() => {
     const saved = localStorage.getItem('user');
-    return saved ? JSON.parse(saved) : null;
+    //  // Add robust check for saved data before parsing
+    // if (saved && typeof saved === 'string' && saved !== 'undefined') {
+    //   try {
+    //     return JSON.parse(saved);
+    //   } catch (error) {
+    //     // If parsing fails (e.g., malformed JSON), log the error and clear the item
+    //     console.error("Error parsing user from localStorage:", error);
+    //     localStorage.removeItem('user'); // Clear the bad data
+    //     return null; // Return null to prevent further issues
+    //   }
+    // }
+    // // If saved is null, empty string, or the literal "undefined" string
+    // return null; 
+    return saved ? JSON.parse(saved) : undefined;
   });
 
   const login = (newToken: string, userData: any) => {
@@ -25,6 +38,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const logout = () => {
+    console.log("Logging Out");
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setToken(null);

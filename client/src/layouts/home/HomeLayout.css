@@ -1,0 +1,12 @@
+
+
+#main{
+    padding-top: 85px;
+}
+
+
+#outlet-wrapper {
+    display: flex;
+    justify-self: center;
+    padding-top: clamp(50px, 10vh, 85px);
+}

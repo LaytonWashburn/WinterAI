@@ -1,0 +1,36 @@
+#signup{
+    background-color: #87CEEB;
+    padding-top: 85px;
+    height: 100vh;
+}
+
+#signup #container {
+    background-color: white;
+    padding: 16px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#create-account-button  {
+    width: 100%;
+    height: 50px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#form-container{
+    padding: 8px;
+}
+
+.input {
+    padding: "10px 12px 10px 12px";
+    font-size: "16px";
+    border-radius: "8px";
+    border: "1px solid rgba(0, 0, 0, 0.2)";
+    outline-color: "#4CAF50";
+    transition: "border-color 0.2s ease-in-out";
+}
