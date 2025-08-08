@@ -5,11 +5,11 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from app.services.db.database import get_db
 from app.services.db.models.user import User  # Assuming you have a User model defined in models/user.py
-from app.utils.authentication.password import hash_password, verify_password  # Assuming you have a utility function for hashing passwords
+from app.services.auth.password import hash_password, verify_password  # Assuming you have a utility function for hashing passwords
 from app.routers.user.profile.profile import profile_router
 from app.services.auth.auth import create_access_token
-from app.pydantic.auth import AuthSuccessfulResponse
-from app.pydantic.user import UserPydanticRequest, UserPydanticResponse, LoginRequest  # Assuming you have a Pydantic model defined in routers/pydantic/user.py
+from app.services.pydantic.auth import AuthSuccessfulResponse
+from app.services.pydantic.user import UserPydanticRequest, UserPydanticResponse, LoginRequest  # Assuming you have a Pydantic model defined in routers/pydantic/user.py
 
 user_router = APIRouter()
 

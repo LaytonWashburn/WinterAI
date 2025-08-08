@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
 interface AuthContextType {
   user: any;
@@ -31,6 +32,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   });
 
   const login = (newToken: string, userData: any) => {
+    if (!newToken || !userData) {
+      console.error("Invalid login attempt: token or user data is missing");
+      return <Navigate to="/login" replace />;
+    }
     localStorage.setItem('token', newToken);
     localStorage.setItem('user', JSON.stringify(userData));
     setToken(newToken);

@@ -1,14 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import "../../css/flex.css";
-import "../../css/margin.css";
-import "../../css/background.css";
-import "../../css/text.css";
-import "../../css/image.css";
-import "../../css/shadow.css";
-import './Navbar.css';
-import "../../css/link.css"
+import styles from './Navbar.module.css'; // <-- make sure this file exists
+import "../../css/material-symbol-outline.css";
 import character from '../../../public/character-t.png';
+import box from '../../../public/box.png';
 import { useAuth } from '../../context/AuthContext'; // <-- make sure this exists
 
 
@@ -16,6 +11,8 @@ export const Navbar = () => {
 
     const { isAuthenticated, logout, user, token } = useAuth(); // <-- pull from context
     const [profilePictureUrl, setProfilePictureUrl] = useState("");
+    
+    const [isMobile, setIsMobile] = useState(false);
 
     const fetchProfilePicture = async () => {
 
@@ -63,7 +60,9 @@ export const Navbar = () => {
     useEffect(() => {
         // This useEffect will run when `isAuthenticated` or `user` or `token` changes.
         // This means it will trigger on login, logout, and initial load if authenticated.
-        fetchProfilePicture();
+        if (isAuthenticated) {
+            fetchProfilePicture();
+        }
 
         // Cleanup function (optional but good practice if you had
         // event listeners or subscriptions)
@@ -74,22 +73,22 @@ export const Navbar = () => {
 
 
     return (
-        <nav id="navbar" className="flex flex-row flex-space-between shadow-underneath position-fixed">   
-           <div className="flex flex-center-all margin-left-8">
-            <Link className="underline-none margin-left-8 margin-right-8 link-pic">
+        <nav id={styles.navbar} className={`${styles.shadowUnderneath}`}>   
+           <div id={styles.leftNavSection} className="">
+            {/* <Link className="underline-none margin-left-8 margin-right-8 link-pic">
                 <img src={character} alt="Character" className="image-cover-fit link-pic" />
-            </Link>
-            <Link className="underline-none margin-left-8 margin-right-8 link">Winter AI</Link>
-            <Link className="underline-none margin-left-8 margin-right-8 link">Products</Link>
-            <Link className="underline-none margin-left-8 margin-right-8 link">Careers</Link>
-            <Link className="underline-none margin-left-8 margin-right-8 link">About</Link>
+            </Link> */}
+            <Link className={styles.linkContainer}>Winter AI</Link>
+            <Link className={styles.linkContainer}>Products</Link>
+            <Link className={styles.linkContainer}>Careers</Link>
+            <Link className={styles.linkContainer}>About</Link>
            </div>
-           <div className="flex flex-center-all margin-right-8">
+           <div id={styles.rightNavSection } className="">
                 {
                     !isAuthenticated && (
                         <>
-                            <Link className="underline-none margin-left-8 margin-right-8 link" to={'/signup/'}>Sign Up</Link>
-                            <Link className="underline-none margin-left-8 margin-right-8 link" to={"/signin/"}>Sign In</Link> 
+                            <Link className={styles.linkContainer} to={'/signup/'}>Sign Up</Link>
+                            <Link className={styles.linkContainer} to={"/signin/"}>Sign In</Link> 
                         </>
                     )
                     
@@ -97,16 +96,16 @@ export const Navbar = () => {
                 
                 {
                 isAuthenticated && 
-                <Link className="underline-none margin-left-8 margin-right-8 link" onClick={() => logout()}>Log Out</Link>
+                <Link className={styles.linkContainer} onClick={() => logout()}>Log Out</Link>
                 } 
-                <Link className="underline-none margin-left-8 margin-right-8">
+                {/* <Link className="underline-none margin-left-8 margin-right-8" id="profile-link">
                     <img 
-                        src={profilePictureUrl ? profilePictureUrl : character} 
+                        src={profilePictureUrl ? profilePictureUrl : box} 
                         alt="Character" 
                         id="profile-pic"
                         className="image-cover-fit link-pic" 
                     />
-                </Link>
+                </Link> */}
            </div>
         </nav>
     )

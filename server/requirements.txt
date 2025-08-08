@@ -9,4 +9,5 @@ passlib[bcrypt]
 python-jose[cryptography]
 psycopg2-binary
 minio 
+pyjwt
 # Optional dependencies for testing

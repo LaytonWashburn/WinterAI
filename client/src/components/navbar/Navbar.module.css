@@ -1,0 +1,80 @@
+#navbar {
+    display: flex;
+    flex-direction: column;
+}
+
+#leftNavSection {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 12px;
+}
+
+#rightNavSection {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: start;
+    align-items: flex-start;
+    padding-left: 12px;
+}
+
+
+@media (min-width: 413px) {
+    #navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        min-width: 100%;
+        height: clamp(50px, 10vh, 85px);
+        background-color: white;
+         overflow-x: hidden;
+    }
+
+
+    #leftNavSection {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        /* justify-content: center; */
+        align-items: center;
+    }
+
+
+    .linkContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 0 12px 0 12px;
+        text-decoration: none;
+    }
+
+    .linkContainer:hover{
+        color: #87CEEB;
+        transform: scale(1.05);
+    }
+
+    #rightNavSection {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        /* justify-content: center; */
+        align-items: center;
+        padding-right: 12px;
+    }
+
+
+    #profile-pic{
+        border-radius: 50%;
+    }
+
+    .shadowUnderneath {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    }
+
+    
+}

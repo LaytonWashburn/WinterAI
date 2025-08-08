@@ -2,13 +2,13 @@ import {  React, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useAuth } from '../../context/AuthContext';
 
-import "../../css/flex.css";
-import "../../css/margin.css";
-import "../../css/background.css";
-import "../../css/text.css";
-import "../../css/image.css";
-import "../../css/height.css";
-import "../../css/width.css";
+// import "../../css/flex.css";
+// import "../../css/margin.css";
+// import "../../css/background.css";
+// import "../../css/text.css";
+// import "../../css/image.css";
+// import "../../css/height.css";
+// import "../../css/width.css";
 import "../../css/material-symbol-outline.css"
 import "./SignUp.css";
 

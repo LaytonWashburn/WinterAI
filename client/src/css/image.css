@@ -1,8 +1,0 @@
-.image-cover-fit {
-  object-fit: cover;
-}
-
-.sign-up-image {
-  height: clamp(100px, 100%, 200px);
-  width: clamp(100px, 100%, 200px);
-}
