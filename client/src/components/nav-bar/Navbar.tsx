@@ -1,19 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import styles from './Navbar.module.css'; // <-- make sure this file exists
-import "../../css/material-symbol-outline.css";
-import character from '../../../public/character-t.png';
-import box from '../../../public/box.png';
 import { useAuth } from '../../context/AuthContext'; // <-- make sure this exists
-import { NavDrawer } from '../navdrawer/NavDrawer';
-import { SearchBar } from '../search_bar.tsx/SearchBar';
+import { NavDrawer } from '../nav-drawer/NavDrawer';
+import { SearchBar } from '../search-bar/SearchBar';
+import { TabBar } from '../tab-bar/TabBar';
+import styles from './Navbar.module.css';
+import "../../css/material-symbol-outline.css";
 
 export const Navbar = () => {
 
-    const { isAuthenticated, logout, user, token } = useAuth(); // <-- pull from context
+    const { isAuthenticated, logout, user, token } = useAuth();
     const [profilePictureUrl, setProfilePictureUrl] = useState("");
     const [isNavdrawerOpen, setIsNavdrawerOpen] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
 
     const fetchProfilePicture = async () => {
 
@@ -31,7 +29,7 @@ export const Navbar = () => {
         });
 
         if (response.ok) {
-            // **** CRITICAL CHANGE HERE: Get response as a Blob, not JSON ****
+            // Get response as a Blob, not JSON
             const imageBlob = await response.blob(); 
             console.log("Received image blob:", imageBlob);
 
@@ -70,11 +68,12 @@ export const Navbar = () => {
         return () => {
             // Any cleanup if necessary when component unmounts or dependencies change
         };
-    }, [isAuthenticated, user, token]); // <--- CRITICAL: Dependency array
+    }, [isAuthenticated, user, token]); 
 
 
     return (
         <nav id={styles.navbar} className={`${styles.shadowUnderneath}`}>   
+            {isAuthenticated && <TabBar />}
             {
                 isAuthenticated && <NavDrawer 
                 isOpen={isNavdrawerOpen} 
@@ -94,10 +93,7 @@ export const Navbar = () => {
             {/* <Link className="underline-none margin-left-8 margin-right-8 link-pic">
                 <img src={character} alt="Character" className="image-cover-fit link-pic" />
             </Link> */}
-            <Link className={styles.linkContainer}>Winter AI</Link>
-            {/* <Link className={styles.linkContainer}>Products</Link>
-            <Link className={styles.linkContainer}>Careers</Link>
-            <Link className={styles.linkContainer}>About</Link> */}
+            <Link id={styles.linkLogo} className={styles.linkContainer}>Winter AI</Link>
            </div>
            {
             isAuthenticated &&
@@ -116,7 +112,11 @@ export const Navbar = () => {
                 
                 {
                 isAuthenticated && 
-                <Link className={styles.linkContainer} onClick={() => logout()}>Log Out</Link>
+                <Link 
+                    className={styles.linkContainer} 
+                    onClick={() => logout()}>
+                    Log Out
+                </Link>
                 } 
                 {/* <Link className="underline-none margin-left-8 margin-right-8" id="profile-link">
                     <img 

@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { DashboardPage } from '../pages/dashboard/DashboardPage';
 import { ProtectedRoute } from "../components/auth/ProtectedRoute";
 import { Guest } from '../pages/Guest';
-import { GuestLayout } from "../layouts/GuestLayout";
+import { GuestLayout } from "../layouts/guest/GuestLayout";
 import { SignUp } from "../pages/signup/SignUp";
 import { SignIn } from "../pages/signin/SignIn";
 import { HomeLayout } from "../layouts/home/HomeLayout";

@@ -1,0 +1,106 @@
+/*
+  Mobile-First Base Styles
+  These styles are for the smallest screens by default.
+  The original code was implicitly defining these with a column layout.
+*/
+
+#navbar {
+    display: flex;
+    flex-direction: column;
+    height: clamp(50px, 10vh, 85px);
+    font-size: large;
+    min-width: 100%;
+}
+
+#leftNavSection{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+#rightNavSection {
+    display: none
+}
+
+#linkLogo {
+    display: flex;
+    text-decoration: none;
+    padding: 0 16px 0 16px;
+}
+
+#menuButton {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 16px 0 16px;
+    margin: 0;
+}
+
+
+.linkContainer {
+    display: none;
+}
+
+.shadowUnderneath {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
+
+/*
+  Tablet and Small Desktop Styles
+  These styles apply to screens 576px and wider.
+*/
+@media (min-width: 576px) {
+    /* Change the navbar to a row layout */
+    #navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        height: clamp(50px, 10vh, 85px);
+        background-color: white;
+        overflow-x: hidden;
+    }
+
+    #leftNavSection,
+    #rightNavSection {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        align-items: center;
+    }
+
+    #linkLogo {
+        padding: 0;
+    }
+
+
+    .linkContainer {
+        display: flex;
+        flex-direction: row;
+        font-size: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: auto;
+        padding: 0 16px 0 16px;
+        text-decoration: none;
+    }
+
+    .linkContainer:hover {
+        color: #87CEEB;
+        transform: scale(1.05);
+    }
+    
+    #profile-pic {
+        border-radius: 50%;
+    }
+
+    #rightNavSection {
+        justify-content: center;
+        padding-right: 12px;
+    }
+}
+
+

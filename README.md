@@ -31,6 +31,9 @@
     + Alembic
     + PyTest
 
+## Monitoring and Logging
++ Although Complete Overkill, I wanted to Test Out These Technologies
+
 ## Contact
 + Please Make An Issue on GitHub With Bug / Issue Description.
 
