@@ -1,0 +1,26 @@
+
+
+
+
+export const Services = () => {
+
+    const services = [
+        {id: 1, name: 'Personalized Agent', description: 'Helps streamline your tasks and boost productivity.'},
+        {id: 2, name: '3D Viewer', description: 'Visualizes complex 3D models with ease.'},
+        {id: 3, name: 'Computer Vision', description: 'Analyzes and interprets visual data effectively.'},
+    ]
+
+
+    return(
+        <>
+            {
+                services.map((service) => (
+                    <div key={service.id}>
+                        <h2>{service.name}</h2> 
+                        <p>{service.description}</p>
+                    </div>
+                ))
+            }
+        </>
+    )
+}

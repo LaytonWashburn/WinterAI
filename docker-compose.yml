@@ -1,7 +1,6 @@
 volumes:
   client_node_modules:
   pg_data:
-  # redis_data:
   minio_data:
   loki_data:
   grafana_data:
@@ -48,25 +47,15 @@ services:
     ports:
       - 9000:9000
       - 9001:9001
-  # redis:
-  #   image: redis:latest
-  #   ports:
-  #     - "6379:6379"
-  #   volumes:
-  #     - redis_data:/data
   prometheus:
     image: prom/prometheus
     volumes:
       - "./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
       - "./prometheus/rules.yml:/etc/prometheus/rules.yml"
-    # networks:
-    #   - localprom
     ports:
       - 9090:9090
   node-exporter:
     image: prom/node-exporter
-    # networks:
-    #   - localprom
     ports:
       - 9100:9100
   alert-manager:
@@ -82,7 +71,7 @@ services:
     volumes:
       - ./loki/loki-config.yaml:/etc/loki/local-config.yaml
       - loki_data:/loki
-      - ./loki/wal:/loki/wal     # <-- Add this line for WAL folder
+      - ./loki/wal:/loki/wal     
     command: -config.file=/etc/loki/local-config.yaml
 
   promtail:
@@ -102,6 +91,3 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=user
       - GF_SECURITY_ADMIN_PASSWORD=password
-# networks:
-#   localprom:
-#     driver: bridge
