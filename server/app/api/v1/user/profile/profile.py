@@ -4,7 +4,7 @@ from fastapi.responses import StreamingResponse, Response , JSONResponse
 from minio.error import S3Error
 from app.services.minio.client import minioClient, profile_picture_bucket
 from app.services.db.database import get_db
-from app.services.db.models.user import User
+from app.models.user import User
 from sqlalchemy.orm import Session
 import io
 import os

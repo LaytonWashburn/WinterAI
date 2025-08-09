@@ -1,27 +1,26 @@
 from fastapi import  Depends, APIRouter, HTTPException, status
 from fastapi.responses import RedirectResponse 
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from sqlalchemy.exc import IntegrityError, OperationalError
 from sqlalchemy.orm import Session
-from datetime import datetime, timedelta
+from datetime import timedelta
 from app.services.db.database import get_db
-from app.services.db.models.user import User  # Assuming you have a User model defined in models/user.py
-from app.services.auth.password import hash_password, verify_password  # Assuming you have a utility function for hashing passwords
-from app.routers.user.profile.profile import profile_router
-from app.services.auth.auth import create_access_token
-from app.services.pydantic.auth import AuthSuccessfulResponse
-from app.services.pydantic.user import UserPydanticRequest, UserPydanticResponse, LoginRequest  # Assuming you have a Pydantic model defined in routers/pydantic/user.py
+from app.models.user import User  # Assuming you have a User model defined in models/user.py
+from ..auth.service.password import hash_password, verify_password  # Assuming you have a utility function for hashing passwords
+from .profile.profile import profile_router
+from ..auth.service.auth import create_access_token
+from ..auth.schema.auth import AuthSuccessfulResponse
+from ..user.schema.user import UserPydanticRequest, UserPydanticResponse  # Assuming you have a Pydantic model defined in routers/pydantic/user.py
 
-user_router = APIRouter()
+user_router = APIRouter(prefix="/users", tags=["User"])
 
 user_router.include_router(profile_router)
 
+@user_router.get("/health")
+async def health_check():
+    return {"status": "ok"}
 
 @user_router.get("/all")
-async def get_users():  
-    return [{"username": "user1"}, {"username": "user2"}]
-
-
-@user_router.get("/users")
 async def read_users(db: Session = Depends(get_db)):
     users = db.query(User).all()
     return users
@@ -76,21 +75,36 @@ async def create_user(user: UserPydanticRequest, db: Session = Depends(get_db)):
         profile_picture=user.profile_picture
     ) # Upacks the Pydantic model into a dictionary
     # Assuming User model has a constructor that accepts keyword arguments
-    db.add(new_user)
-    db.commit()
-    db.refresh(new_user)
+    
+    try:
+        db.add(new_user)
+        db.commit()
+        db.refresh(new_user)
+    except IntegrityError as e:
+        db.rollback()
+        # Check if it's a unique violation (Postgres error code '23505')
+        if "unique constraint" in str(e.orig).lower() or getattr(e.orig, 'pgcode', '') == '23505':
+            raise HTTPException(status_code=400, detail="Username or email already exists") from e
+        else:
+            raise HTTPException(status_code=400, detail="Database integrity error") from e
+    except OperationalError as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail="Database connection failed") from e
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail="Unexpected error") from e
 
 
      # 3. Generate a JWT token for the newly created user
     access_token_expires = timedelta(minutes=360)
+    print("Generating access token for new user")
     access_token = create_access_token(
         data={"sub": new_user.username, "user_id": new_user.id}, # 'sub' is standard, user_id is useful
         expires_delta=access_token_expires
     )
 
-    # 4. Return the token and the user's details
-    # FastAPI will automatically convert new_user (SQLAlchemy ORM object)
-    # to UserResponse (Pydantic) because of from_attributes=True in UserResponse's config.
+    # Return the token and the user's details
+    print("New user created with ID:", new_user.id)
     print(dir(new_user))
     return AuthSuccessfulResponse(
         access_token=access_token,
@@ -100,9 +114,4 @@ async def create_user(user: UserPydanticRequest, db: Session = Depends(get_db)):
 
 
 
-@user_router.post("/users/authenticate")
-async def authenticate_user(username: str, password: str, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.username == username).first()
-    if not user or not verify_password(password, user.hashed_password):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
-    return {"message": f"Welcome {user.username}!"}
+

@@ -26,12 +26,13 @@ services:
     env_file:
       - ./server/.env
       - ./.minio.env
+      - ./.postgres.env
   postgres:
     image: postgres:latest
     ports:
       - "5432:5432"
     env_file:
-      - ./postgres/.env
+      -  .postgres.env
     volumes:
       - pg_data:/var/lib/postgresql/data
   minio:

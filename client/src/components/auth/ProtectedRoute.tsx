@@ -9,16 +9,3 @@ export const ProtectedRoute = ({ children }) => {
 
   return isAuthenticated ? children : <Navigate to="/signin" replace />;
 };
-
-
-
-// import { Navigate, Outlet } from "react-router-dom";
-// import { useAuth } from "../../context/AuthContext";
-
-// export const ProtectedRoute = () => {
-//   const { isAuthenticated } = useAuth();
-
-//   console.log(isAuthenticated);
-
-//   return isAuthenticated ? <Outlet /> : <Navigate to="/dashboard" replace />;
-// };

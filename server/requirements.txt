@@ -2,6 +2,7 @@ fastapi
 uvicorn
 pydantic
 pydantic[email]
+pydantic-settings
 sqlalchemy
 alembic
 python-multipart

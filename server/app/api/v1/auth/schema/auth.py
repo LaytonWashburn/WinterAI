@@ -1,6 +1,6 @@
 from pydantic import BaseModel
-from app.services.db.models.user import User
-from app.services.pydantic.user import UserPydanticResponse
+from app.models.user import User
+from ...user.schema.user import UserPydanticResponse
 
 # New schema for successful registration/login response
 class AuthSuccessfulResponse(BaseModel):

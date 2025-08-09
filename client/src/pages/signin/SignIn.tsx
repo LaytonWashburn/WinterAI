@@ -21,7 +21,7 @@ export const SignIn = () => {
             plain_text_password: password,
         };
 
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/user/token`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/auth/login`, {
             method: "POST",
             headers: { 
                 'Content-Type': 'application/x-www-form-urlencoded' 

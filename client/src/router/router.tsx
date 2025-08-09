@@ -5,13 +5,8 @@ import { Guest } from '../pages/Guest';
 import { GuestLayout } from "../layouts/GuestLayout";
 import { SignUp } from "../pages/signup/SignUp";
 import { SignIn } from "../pages/signin/SignIn";
-import "../index.css";
 import { HomeLayout } from "../layouts/home/HomeLayout";
-// import { HomeLayout } from '../../layouts/HomeLayout';
-// import { AuthProvider } from '../../context/AuthContext';
-// import { Login } from '../../pages/Login';
-// import { createRoot } from 'react-dom/client';
-// import { ProtectedRoute } from '../../components/auth/ProtectedRoute';0
+import "../index.css";
 
 export const router = createBrowserRouter([
   {

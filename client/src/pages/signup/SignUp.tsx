@@ -1,19 +1,8 @@
 import {  React, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useAuth } from '../../context/AuthContext';
-
-// import "../../css/flex.css";
-// import "../../css/margin.css";
-// import "../../css/background.css";
-// import "../../css/text.css";
-// import "../../css/image.css";
-// import "../../css/height.css";
-// import "../../css/width.css";
 import "../../css/material-symbol-outline.css"
 import "./SignUp.css";
-
-import winter from "../../../public/winter.png";
-
 
 
 export const SignUp = () => {
@@ -42,9 +31,9 @@ export const SignUp = () => {
             formData.append("file", file); // "file" should match what your FastAPI expects
             const response = await fetch(`${import.meta.env.VITE_API_URL}/user/profile/upload`, {
                 method: 'POST',
-                // headers: {
-                // 'Content-Type': 'application/json'
-                // },
+                headers: {
+                'Content-Type': 'application/json'
+                },
                 body: formData,
             })
             const data = await response.json();
@@ -77,8 +66,9 @@ export const SignUp = () => {
             profile_picture: file.name
         };
         console.log("Form data:", payload);
+        
         uploadProfilePicture(file);
-        const response = await fetch(`${apiUrl}/user/create`, {
+        const response = await fetch(`${apiUrl}/v1/users/create`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
