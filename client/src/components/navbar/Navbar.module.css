@@ -22,6 +22,7 @@
 }
 
 
+
 @media (min-width: 413px) {
     #navbar {
         display: flex;
@@ -42,14 +43,24 @@
         align-items: center;
     }
 
+    #menuButton {
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+    }
 
     .linkContainer {
         display: flex;
         flex-direction: row;
+        font-size: 20px;
         justify-content: center;
         align-items: center;
-        height: 100%;
-        padding: 0 12px 0 12px;
+        /* height: 100%; */
+        height: auto;
+        padding: 0 16px 0 16px;
         text-decoration: none;
     }
 

@@ -5,13 +5,14 @@ import "../../css/material-symbol-outline.css";
 import character from '../../../public/character-t.png';
 import box from '../../../public/box.png';
 import { useAuth } from '../../context/AuthContext'; // <-- make sure this exists
-
+import { NavDrawer } from '../navdrawer/NavDrawer';
+import { SearchBar } from '../search_bar.tsx/SearchBar';
 
 export const Navbar = () => {
 
     const { isAuthenticated, logout, user, token } = useAuth(); // <-- pull from context
     const [profilePictureUrl, setProfilePictureUrl] = useState("");
-    
+    const [isNavdrawerOpen, setIsNavdrawerOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
     const fetchProfilePicture = async () => {
@@ -74,15 +75,34 @@ export const Navbar = () => {
 
     return (
         <nav id={styles.navbar} className={`${styles.shadowUnderneath}`}>   
+            {
+                isAuthenticated && <NavDrawer 
+                isOpen={isNavdrawerOpen} 
+                callCallback={() => setIsNavdrawerOpen(false)}
+           />
+            }
            <div id={styles.leftNavSection} className="">
+            { isAuthenticated &&
+                <button
+                id={styles.menuButton} 
+                className="material-symbols-outlined"
+                onClick={() => setIsNavdrawerOpen(true)}
+            >
+                menu
+            </button>
+        }
             {/* <Link className="underline-none margin-left-8 margin-right-8 link-pic">
                 <img src={character} alt="Character" className="image-cover-fit link-pic" />
             </Link> */}
             <Link className={styles.linkContainer}>Winter AI</Link>
-            <Link className={styles.linkContainer}>Products</Link>
+            {/* <Link className={styles.linkContainer}>Products</Link>
             <Link className={styles.linkContainer}>Careers</Link>
-            <Link className={styles.linkContainer}>About</Link>
+            <Link className={styles.linkContainer}>About</Link> */}
            </div>
+           {
+            isAuthenticated &&
+            <SearchBar />
+           }
            <div id={styles.rightNavSection } className="">
                 {
                     !isAuthenticated && (

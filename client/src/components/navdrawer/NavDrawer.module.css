@@ -1,0 +1,91 @@
+.backdrop {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background-color: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms;
+  z-index: 50;
+}
+
+.backdropOpen {
+  opacity: 0.5;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%);
+  transition: transform 300ms ease-in-out;
+  z-index: 60; /* above backdrop */
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.close {
+  cursor: pointer;
+  font-family: 'Material Symbols Outlined', sans-serif;
+  transition: color 0.2s ease;
+}
+
+.close:hover {
+  color: var(--color-nav-hover);
+}
+
+.navitems {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+  overflow-y: auto; /* optional, if nav items overflow vertically */
+}
+
+.navDrawerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.navDraweIconContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--color-nav-text-hover);
+  text-decoration: underline;
+}

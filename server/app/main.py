@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from prometheus_fastapi_instrumentator import Instrumentator
 from app.api.routes import api_router
 # from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 # from minio import Minio
@@ -31,7 +32,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-print("Starting Winter AI Server...")
+instrumentator = Instrumentator()
+instrumentator.instrument(app).expose(app)
+
 app.include_router(api_router)
 
 @app.get("/")

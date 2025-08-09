@@ -3,6 +3,8 @@ volumes:
   pg_data:
   # redis_data:
   minio_data:
+  loki_data:
+  grafana_data:
 services:
   client:
     build:
@@ -52,3 +54,54 @@ services:
   #     - "6379:6379"
   #   volumes:
   #     - redis_data:/data
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - "./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
+      - "./prometheus/rules.yml:/etc/prometheus/rules.yml"
+    # networks:
+    #   - localprom
+    ports:
+      - 9090:9090
+  node-exporter:
+    image: prom/node-exporter
+    # networks:
+    #   - localprom
+    ports:
+      - 9100:9100
+  alert-manager:
+    image: prom/alertmanager
+    volumes:
+      - "./prometheus/alertmanager.yml:/alertmanager/alertmanager.yml"
+    ports:
+      - 9093:9093
+  loki:
+    image: grafana/loki:2.8.2
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./loki/loki-config.yaml:/etc/loki/local-config.yaml
+      - loki_data:/loki
+      - ./loki/wal:/loki/wal     # <-- Add this line for WAL folder
+    command: -config.file=/etc/loki/local-config.yaml
+
+  promtail:
+    image: grafana/promtail:2.8.2
+    volumes:
+      - ./promtail/promtail-config.yaml:/etc/promtail/promtail-config.yaml
+      - /var/log:/var/log
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: -config.file=/etc/promtail/promtail-config.yaml
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=user
+      - GF_SECURITY_ADMIN_PASSWORD=password
+# networks:
+#   localprom:
+#     driver: bridge
