@@ -1,0 +1,76 @@
+#main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: inherit;
+    padding: 16px;
+}
+
+#mainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* width: 325px; */
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    /* border-radius: 24px; */
+    /* box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); */
+    /* background-color: #87CEEB; */
+}
+
+#title {
+  align-self: flex-start; /* moves only the title to the top left inside mainContainer */
+  margin-bottom: 24px;
+  padding: 16px;
+  font-size: 2rem;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+
+#usernameInput {
+    /* align-self: flex-start; */
+    padding: 16px;
+    margin: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#passwordInput {
+    /* align-self: flex-start; */
+    padding: 16px;
+    margin: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#submitButton {
+    border-radius: 4px;
+    width: 100px;
+    height: 50px;
+    align-self: flex-end;
+    border: none;
+    font-weight: bold;
+    background-color: #8E7CC3;
+}
+
+#submitButton:hover {
+    background-color: #5A3E99;;
+}
+
+@media (min-width: 576px) {
+    #mainContainer{
+        width: 450px;
+        /* border: solid #5A3E99; */
+    }
+}
+
+@media (min-width: 768px) {
+    #mainContainer{
+        width: 650px;
+    }
+}

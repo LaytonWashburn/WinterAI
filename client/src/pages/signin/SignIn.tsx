@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useAuth } from '../../context/AuthContext';
 
-import "./SignIn.css"
+import styles from "./SignIn.module.css";
 
 
 export const SignIn = () => {
@@ -51,24 +51,27 @@ export const SignIn = () => {
 
 
     return(
-        <form action="" id="main" onSubmit={(e)=>{signin(e)}}>
-            <div id="main-container">
-                <span>Sign In Page</span>
-                <label htmlFor="username">Username</label>
+        <form action="" id={styles.main} onSubmit={(e)=>{signin(e)}}>
+           
+            <div id={styles.mainContainer}>
+                 <span id={styles.title}>Sign In</span>
                 <input 
                     type="text" 
                     value={username}
                     name="username" 
+                    placeholder="Username"
+                    id={styles.usernameInput}
                     onChange={(e) => {setUsername(e.target.value)}}
                 />
-                <label htmlFor="password">Password</label>
                 <input 
                     type="password"
+                    placeholder="Password"
                     value={password} 
                     name="password" 
+                    id={styles.passwordInput}
                     onChange={(e) => {setPassword(e.target.value)}}
                  />
-                <button id="submit-button" >Sign In</button>
+                <button id={styles.submitButton} >Sign In</button>
             </div>
         </form>
     )

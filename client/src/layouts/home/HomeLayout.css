@@ -8,5 +8,7 @@
 #outlet-wrapper {
     display: flex;
     justify-self: center;
+    flex: 1;             /* take up remaining space */
+    overflow: auto;   
     /* padding-top: clamp(50px, 10vh, 85px); */
 }
