@@ -81,19 +81,20 @@ export const Navbar = () => {
            />
             }
            <div id={styles.leftNavSection} className="">
-            { isAuthenticated &&
+            { isAuthenticated && 
                 <button
-                id={styles.menuButton} 
-                className="material-symbols-outlined"
-                onClick={() => setIsNavdrawerOpen(true)}
-            >
-                menu
-            </button>
+                    id={styles.menuButton} 
+                    className="material-symbols-outlined"
+                    onClick={() => setIsNavdrawerOpen(true)}
+                >
+                    menu
+                </button>
+                
         }
             {/* <Link className="underline-none margin-left-8 margin-right-8 link-pic">
                 <img src={character} alt="Character" className="image-cover-fit link-pic" />
             </Link> */}
-            <Link id={styles.linkLogo} className={styles.linkContainer}>Winter AI</Link>
+            <Link id={styles.logoLink} className={styles.linkContainer}>Winter AI</Link>
            </div>
            {
             isAuthenticated &&
@@ -103,8 +104,18 @@ export const Navbar = () => {
                 {
                     !isAuthenticated && (
                         <>
-                            <Link className={styles.linkContainer} to={'/signup/'}>Sign Up</Link>
-                            <Link className={styles.linkContainer} to={"/signin/"}>Sign In</Link> 
+                            <Link 
+                                className={`${styles.linkContainer} ${styles.rightLink}`} 
+                                to={'/signup/'}
+                            >
+                                Sign Up
+                            </Link>
+                            <Link 
+                                className={`${styles.linkContainer} ${styles.rightLink}`} 
+                                to={"/signin/"}
+                            >
+                                Sign In
+                            </Link> 
                         </>
                     )
                     
@@ -113,7 +124,7 @@ export const Navbar = () => {
                 {
                 isAuthenticated && 
                 <Link 
-                    className={styles.linkContainer} 
+                    className={`${styles.linkContainer} ${styles.rightLink}`} 
                     onClick={() => logout()}>
                     Log Out
                 </Link>

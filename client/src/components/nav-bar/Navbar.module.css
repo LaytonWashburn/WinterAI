@@ -6,24 +6,29 @@
 
 #navbar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     height: clamp(50px, 10vh, 85px);
     font-size: large;
     min-width: 100%;
+    position: sticky; 
+    top: 0
 }
 
+#rightNavSection, 
 #leftNavSection{
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
+    /* flex-direction: row-reverse; */
+    /* justify-content: space-between; */
     align-items: center;
     height: 100%;
 }
-#rightNavSection {
+/* #rightNavSection {
     display: none
-}
+} */
 
-#linkLogo {
+#logoLink {
     display: flex;
     text-decoration: none;
     padding: 0 16px 0 16px;
@@ -39,10 +44,17 @@
     margin: 0;
 }
 
-
 .linkContainer {
     display: none;
 }
+
+.rightLink {
+    display: flex;
+    text-decoration: none;
+    padding: 0 16px 0 16px;
+}
+
+
 
 .shadowUnderneath {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);

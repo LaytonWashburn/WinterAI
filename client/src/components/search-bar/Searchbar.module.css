@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
     width: 300px;
-    height: auto; /* fixed height */
+    height: 100%; /* fixed height */
     gap: 0;
     font-family: Arial, sans-serif;
   }
