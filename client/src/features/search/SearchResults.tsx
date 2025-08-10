@@ -12,9 +12,6 @@ interface SearchResultsProps {
 
 export const SearchResults = ({ results, query}: SearchResultsProps) => {
 
-        // if (!results || results.length === 0) {
-        //     return <div>Start searching to see results.</div>;
-        // }
     return (
         <section id={styles.searchResults}>
             {

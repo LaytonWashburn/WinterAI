@@ -34,7 +34,21 @@
 ## Monitoring and Logging
 + Although Complete Overkill, I wanted to Test Out These Technologies
 
+## Features Development
++ Client
+    + Search
+    + Authentication
+        + Consider redux
+    + 3D Viewer
+    + Personalized Agent
++ Server
+    + Doc Agent
+    + Personalized Agent
+    + API Architecture
++ Docs
++ Monitoring and Logging
+
 ## Contact
-+ Please Make An Issue on GitHub With Bug / Issue Description.
++ Please Make An Issue on GitHub With the Bug / Issue Description.
 
 ## Enjoy!

@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useAuth } from '../../context/AuthContext';
+import { ErrorToast } from '../../components/error-toast/ErrorToast';
 
 import styles from "./SignIn.module.css";
 
@@ -11,15 +12,16 @@ export const SignInPage = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState(false);
 
     const signin = async (e:React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         console.log(username);
-        // --- FORMATTING THE REQUEST BODY ---
-        const credentialsPayload = {
-            username: username,
-            plain_text_password: password,
-        };
+        // // --- FORMATTING THE REQUEST BODY ---
+        // const credentialsPayload = {
+        //     username: username,
+        //     plain_text_password: password,
+        // };
 
         const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/auth/login`, {
             method: "POST",
@@ -38,7 +40,11 @@ export const SignInPage = () => {
             // Optionally redirect or show a success message
         } else {
             console.error("Sign up failed:", data);
-            // Optionally show an error message
+            setErrorMessage(true);
+            setTimeout(() => {
+                setErrorMessage(false);
+            }, 5000);
+            return;
         }
 
 
@@ -73,6 +79,9 @@ export const SignInPage = () => {
                  />
                 <button id={styles.submitButton} >Sign In</button>
             </div>
+            {
+                errorMessage && <ErrorToast error_description='Login Failed' />
+            }
         </form>
     )
 }
