@@ -7,7 +7,7 @@ import { SignUpPage } from "../pages/signup/SignUp";
 import { SignInPage } from "../pages/signin/SignIn";
 import { HomeLayout } from "../layouts/home/HomeLayout";
 import { Services } from "../pages/services/Services";
-import { SearchPage } from "../features/search/Search";
+import { SearchPage } from "../features/search/SearchPage";
 import { DynamicModel } from "../features/viewer/ModelViewer";
 import { rootLoader } from "../loaders/RootLoader";
 import "../index.css";
