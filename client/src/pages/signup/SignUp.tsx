@@ -5,7 +5,7 @@ import "../../css/material-symbol-outline.css"
 import "./SignUp.css";
 
 
-export const SignUp = () => {
+export const SignUpPage = () => {
 
     const apiUrl = import.meta.env.VITE_API_URL;
     const fileInputRef = useRef<HTMLInputElement>(null);

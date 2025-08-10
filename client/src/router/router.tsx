@@ -3,26 +3,28 @@ import { DashboardPage } from '../pages/dashboard/DashboardPage';
 import { ProtectedRoute } from "../components/auth/ProtectedRoute";
 import { Guest } from '../pages/Guest';
 import { GuestLayout } from "../layouts/guest/GuestLayout";
-import { SignUp } from "../pages/signup/SignUp";
-import { SignIn } from "../pages/signin/SignIn";
+import { SignUpPage } from "../pages/signup/SignUp";
+import { SignInPage } from "../pages/signin/SignIn";
 import { HomeLayout } from "../layouts/home/HomeLayout";
 import { Services } from "../pages/services/Services";
-import { Search } from "../features/search/Search";
+import { SearchPage } from "../features/search/Search";
+import { DynamicModel } from "../features/viewer/ModelViewer";
 import { rootLoader } from "../loaders/RootLoader";
 import "../index.css";
 
 // Define an array of your guest route configurations
 const guestRoutes = [
   { index: true, element: <Guest /> },
-  { path: "signup", element: <SignUp/> },
-  { path: "signin", element: <SignIn/> },
+  { path: "signup", element: <SignUpPage/> },
+  { path: "signin", element: <SignInPage/> },
 ];
 
 // Define an array of your protected route configurations
 const protectedRoutes = [
   { path: "dashboard", element: <DashboardPage /> },
   { path: "services", element: <Services /> },
-  { path: "search", element: <Search/>}
+  { path: "search", element: <SearchPage/>},
+  {path: "viewer", element: <DynamicModel/>}
 ];
 
 export const router = createBrowserRouter([

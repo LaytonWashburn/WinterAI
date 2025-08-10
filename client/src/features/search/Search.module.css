@@ -3,8 +3,11 @@
 #search {
     display: flex;
     flex-direction: column;
-    /* height: 200px;  */
-    /* border: 2px solid #ccc; */
+    flex-wrap: wrap;
     padding: 12px;
     box-sizing: border-box;
+}
+
+pre {
+    white-space: pre-wrap;
 }

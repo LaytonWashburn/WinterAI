@@ -5,7 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import styles from "./SignIn.module.css";
 
 
-export const SignIn = () => {
+export const SignInPage = () => {
 
     const { login } = useAuth();
     const navigate = useNavigate();

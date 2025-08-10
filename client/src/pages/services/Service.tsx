@@ -5,14 +5,15 @@ import styles from "./Service.module.css";
 interface Service {
     id: number;
     name: string;
-    description: string
+    description: string;
+    link: string;
 }
 
-export const Service = ({id, name, description}: Service) => {
+export const Service = ({id, name, description, link}: Service) => {
 
 
     return(
-        <Link to={"/"}
+        <Link to={link}
             id={styles.service} 
             key={id}>
             <h2>{name}</h2> 

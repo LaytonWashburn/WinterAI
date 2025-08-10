@@ -65,41 +65,20 @@ import style from './SearchBar.module.css';
 
 export const SearchBar = () => {
     const navigate = useNavigate();
-    const apiUrl = import.meta.env.VITE_API_URL;
     const [query, setQuery] = useState("");
 
     const handleChange = (e) => {
         setQuery(e.target.value);
     };
 
-    const submitSearch = async () => {
-        console.log(`Submitting query: ${query}`);
-        try {
-            const response = await fetch(`${apiUrl}/v1/search/query`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    query: query
-                }),
-            });
-            const data = await response.json();
-            console.log("Here is the data from the search");
-            console.log(data);
-        } catch (error) {
-            console.error("Failed to fetch search results:", error);
-        }
-        setQuery("");
-    };
+
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // Prevents the page from refreshing
-        if (query.trim() === "") {
-            console.log("Query is empty, not submitting.");
-            return;
-        }
-        submitSearch();
+        event.preventDefault();
+        if (query.trim() === "") return;
+
+        // Navigate to the search page, passing the query in the URL
+        navigate(`/search?query=${encodeURIComponent(query)}`);
     };
 
     return (
