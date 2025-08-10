@@ -27,9 +27,21 @@
     + Vitest
 + Server
     + FastAPI
+        + Server
     + SQLAlchemy
+        + ORM
     + Alembic
+        + Migrations
     + PyTest
++ SearXNG
+    + Search
++ Docs
+    + Next.js
++ Monitoring and Logging
+    + Prometheus
+    + Promtail
+    + Loki
+    + Grafana
 
 ## Monitoring and Logging
 + Although Complete Overkill, I wanted to Test Out These Technologies
