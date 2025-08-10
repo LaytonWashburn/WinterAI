@@ -14,14 +14,13 @@
     min-width: 100%;
     position: sticky; 
     top: 0;
-    z-index: 1000;
+    background-color: white; 
+    z-index: 1000; 
 }
 
 #rightNavSection, 
-#leftNavSection{
+#leftNavSection {
     display: flex;
-    /* flex-direction: row-reverse; */
-    /* justify-content: space-between; */
     align-items: center;
     height: 100%;
 }
@@ -33,6 +32,8 @@
     display: flex;
     text-decoration: none;
     padding: 0 16px 0 16px;
+    font-size:xx-large;
+    font-weight: bold;
 }
 
 #menuButton {

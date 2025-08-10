@@ -38,6 +38,8 @@
     margin: 8px;
     width: 100%;
     box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 #passwordInput {
@@ -46,6 +48,8 @@
     margin: 8px;
     width: 100%;
     box-sizing: border-box;
+        border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 #submitButton {

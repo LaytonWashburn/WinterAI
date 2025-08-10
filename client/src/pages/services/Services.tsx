@@ -1,5 +1,5 @@
-
-
+import { Service } from "./Service"
+import sytles from "./Services.module.css"
 
 
 export const Services = () => {
@@ -12,15 +12,12 @@ export const Services = () => {
 
 
     return(
-        <>
+        <section id={sytles.services}>
             {
                 services.map((service) => (
-                    <div key={service.id}>
-                        <h2>{service.name}</h2> 
-                        <p>{service.description}</p>
-                    </div>
+                    <Service {...service} />
                 ))
             }
-        </>
+        </section>
     )
 }

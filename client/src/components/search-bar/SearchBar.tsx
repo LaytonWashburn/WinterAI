@@ -7,6 +7,7 @@ export const SearchBar = () => {
             <div className={style.search_left}>Search</div>
         <input
             className={style.search_input}
+            placeholder="Explore the web ..."
             type="text"
         />
         <div className={`${style.search_right} material-symbols-outlined`}>

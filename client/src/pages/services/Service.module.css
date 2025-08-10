@@ -1,0 +1,23 @@
+
+
+#service {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    margin: 12px;
+    box-sizing: border-box;
+    width: 250px;
+    height: 250px;
+    margin: 16px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+#service:hover {
+    transform: scale(1.05);
+    background-color: #f6f6f6;
+    cursor: pointer;
+}
