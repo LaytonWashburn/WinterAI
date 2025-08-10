@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext'; // <-- make sure this exists
 import { NavDrawer } from '../nav-drawer/NavDrawer';
 import { SearchBar } from '../search-bar/SearchBar';

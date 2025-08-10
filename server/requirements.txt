@@ -12,5 +12,5 @@ psycopg2-binary
 minio 
 pyjwt
 prometheus-fastapi-instrumentator
-duckduckgo-search 
+ddgs
 langchain-community

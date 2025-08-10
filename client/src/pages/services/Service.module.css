@@ -3,14 +3,14 @@
 #service {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 12px;
     margin: 12px;
     box-sizing: border-box;
     width: 250px;
     height: 250px;
-    margin: 16px;
+    /* margin: 16px; */
     border-radius: 8px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
     text-decoration: none;

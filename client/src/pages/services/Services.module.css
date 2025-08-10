@@ -1,4 +1,30 @@
+#services {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100vw;
+}
 
+@media (min-width: 576px) {
+    #services {
+        display: grid;
+        /*
+            This is the core of the simplified approach.
+            - `auto-fit`: Creates as many columns as can fit in the container.
+            - `minmax(250px, 1fr)`: Makes each column at least 250px wide, but allows it to
+            expand to fill remaining space if needed.
+        */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+        grid-auto-flow: row;
+        grid-gap: 2px;
+        place-items: start center;   
+    }
+}
+
+/* DIVIDE */
+
+/* 
 
 #services {
     display: grid;
@@ -8,16 +34,17 @@
 }
 
 
-/* @media (min-width: 576px) {
+@media (min-width: 576px) {
     #services {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 0.25fr 0.25fr;
+        place-items: none;   
     }
-} */
+}
 
 
 @media (min-width: 768px) {
     #services {
-        grid-template-columns: 0.25fr 0.25fr;
+        grid-template-columns: 0.25fr 0.25fr 0.25fr; 
     }
 }
 
@@ -25,4 +52,4 @@
     #services {
         grid-template-columns: 0.1fr 0.1fr 0.1fr 0.1fr;
     }
-}
+} */

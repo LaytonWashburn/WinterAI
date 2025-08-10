@@ -7,6 +7,7 @@ import { SignUp } from "../pages/signup/SignUp";
 import { SignIn } from "../pages/signin/SignIn";
 import { HomeLayout } from "../layouts/home/HomeLayout";
 import { Services } from "../pages/services/Services";
+import { Search } from "../features/search/Search";
 import { rootLoader } from "../loaders/RootLoader";
 import "../index.css";
 
@@ -21,6 +22,7 @@ const guestRoutes = [
 const protectedRoutes = [
   { path: "dashboard", element: <DashboardPage /> },
   { path: "services", element: <Services /> },
+  { path: "search", element: <Search/>}
 ];
 
 export const router = createBrowserRouter([

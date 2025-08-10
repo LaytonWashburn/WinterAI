@@ -8,7 +8,7 @@
 #outlet-wrapper {
     display: flex;
     justify-self: center;
-    flex: 1;             /* take up remaining space */
+    /* flex: 1; This takes up remaining space */
     overflow-y: auto;
     padding-bottom: 60px;
     width: 100%;

@@ -5,6 +5,6 @@ body, #root {
 }
 
 #root {
-    /* display: flex;
-    flex-direction: column; */
+    display: flex;
+    flex-direction: column;
 }
