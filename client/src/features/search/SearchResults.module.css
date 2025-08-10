@@ -1,0 +1,75 @@
+/* SearchResults.module.css */
+
+#searchResults {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f9fafb; /* Light grey background */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-family: 'Inter', sans-serif; /* Using Inter font */
+}
+
+.summary {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #334155; /* Darker grey for text */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e2e8f0; /* Subtle separator */
+}
+
+.resultsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* Space between each search result item */
+    list-style: none; /* Remove default list bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.resultItem {
+    background-color: #ffffff; /* White background for each result card */
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.resultItem:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.resultTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #007bff; /* Standard link blue */
+    text-decoration: none;
+    display: block; /* Make the whole title clickable area */
+    margin-bottom: 0.4rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.resultTitle:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline;
+}
+
+.resultContent {
+    font-size: 0.95rem;
+    color: #475569; /* Medium grey for snippet text */
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+}
+
+.resultUrl {
+    font-size: 0.8rem;
+    color: #64748b; /* Lighter grey for URL */
+    word-break: break-all; /* Ensures long URLs wrap */
+}

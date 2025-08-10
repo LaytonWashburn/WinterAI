@@ -1,55 +1,50 @@
-import { createBrowserRouter } from "react-router-dom"; // , RouterProvider
+import { createBrowserRouter } from "react-router-dom";
 import { DashboardPage } from '../pages/dashboard/DashboardPage';
 import { ProtectedRoute } from "../components/auth/ProtectedRoute";
 import { Guest } from '../pages/Guest';
-import { GuestLayout } from "../layouts/GuestLayout";
-import { SignUp } from "../pages/signup/SignUp";
-import { SignIn } from "../pages/signin/SignIn";
+import { GuestLayout } from "../layouts/guest/GuestLayout";
+import { SignUpPage } from "../pages/signup/SignUp";
+import { SignInPage } from "../pages/signin/SignIn";
 import { HomeLayout } from "../layouts/home/HomeLayout";
+import { Services } from "../pages/services/Services";
+import { SearchPage } from "../features/search/SearchPage";
+import { DynamicModel } from "../features/viewer/ModelViewer";
+import { rootLoader } from "../loaders/RootLoader";
 import "../index.css";
+
+// Define an array of your guest route configurations
+const guestRoutes = [
+  { index: true, element: <Guest /> },
+  { path: "signup", element: <SignUpPage/> },
+  { path: "signin", element: <SignInPage/> },
+];
+
+// Define an array of your protected route configurations
+const protectedRoutes = [
+  { path: "dashboard", element: <DashboardPage /> },
+  { path: "services", element: <Services /> },
+  { path: "search", element: <SearchPage/>},
+  {path: "viewer", element: <DynamicModel/>}
+];
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    loader: rootLoader,
     element: <GuestLayout />,
-    children: [
-      { 
-        path: "/", 
-        element: <Guest /> 
-
-      },
-      {
-        path: "signup",
-        element: <SignUp/>
-      },
-      {
-        path: "signin",
-        element: <SignIn/>
-      }
-    ]
+    // Use the guestRoutes array to create the children routes
+    children: guestRoutes,
   },
-    {
-      // This route uses the ProtectedLayout
-      element: <HomeLayout />,
-      // errorElement: <ErrorPage />, // Catches errors for this branch
-      children: [
-        {
-          path: 'dashboard', // This will be /dashboard
-          element: (
-                      <ProtectedRoute>
-                          <DashboardPage /> {/* Use the renamed Dashboard here */}
-                      </ProtectedRoute>
-                  ),
-        },
-        {
-          path: 'login', // This will be /profile
-                  element: (
-                      <ProtectedRoute>
-                          <DashboardPage /> {/* Use the renamed Dashboard here */}
-                      </ProtectedRoute>
-                  )
-        },
-      // Add more protected routes here
-    ],
+  {
+    element: <HomeLayout />,
+    // Use map() to create the children routes and wrap them in ProtectedRoute
+    children: protectedRoutes.map(route => ({
+      path: route.path,
+      element: (
+        <ProtectedRoute>
+          {route.element}
+        </ProtectedRoute>
+      ),
+    })),
   },
 ]);

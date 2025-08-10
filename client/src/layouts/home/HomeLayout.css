@@ -8,5 +8,14 @@
 #outlet-wrapper {
     display: flex;
     justify-self: center;
-    padding-top: clamp(50px, 10vh, 85px);
+    /* flex: 1; This takes up remaining space */
+    overflow-y: auto;
+    padding-bottom: 60px;
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    #outlet-wrapper {
+        padding-bottom: 0;
+    }
 }

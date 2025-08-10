@@ -1,0 +1,13 @@
+
+
+#search {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+pre {
+    white-space: pre-wrap;
+}

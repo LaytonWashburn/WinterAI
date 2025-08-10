@@ -1,7 +1,6 @@
 volumes:
   client_node_modules:
   pg_data:
-  # redis_data:
   minio_data:
   loki_data:
   grafana_data:
@@ -29,6 +28,23 @@ services:
       - ./server/.env
       - ./.minio.env
       - ./.postgres.env
+  docs:
+    build:
+      context: ./docs
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./searxng_config:/etc/searxng:rw
+    environment:
+      - BASE_URL=http://localhost:8080/
+      - INSTANCE_NAME=Search
+    restart: unless-stopped
   postgres:
     image: postgres:latest
     ports:
@@ -48,60 +64,47 @@ services:
     ports:
       - 9000:9000
       - 9001:9001
-  # redis:
-  #   image: redis:latest
-  #   ports:
-  #     - "6379:6379"
+  # prometheus:
+  #   image: prom/prometheus
   #   volumes:
-  #     - redis_data:/data
-  prometheus:
-    image: prom/prometheus
-    volumes:
-      - "./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
-      - "./prometheus/rules.yml:/etc/prometheus/rules.yml"
-    # networks:
-    #   - localprom
-    ports:
-      - 9090:9090
-  node-exporter:
-    image: prom/node-exporter
-    # networks:
-    #   - localprom
-    ports:
-      - 9100:9100
-  alert-manager:
-    image: prom/alertmanager
-    volumes:
-      - "./prometheus/alertmanager.yml:/alertmanager/alertmanager.yml"
-    ports:
-      - 9093:9093
-  loki:
-    image: grafana/loki:2.8.2
-    ports:
-      - "3100:3100"
-    volumes:
-      - ./loki/loki-config.yaml:/etc/loki/local-config.yaml
-      - loki_data:/loki
-      - ./loki/wal:/loki/wal     # <-- Add this line for WAL folder
-    command: -config.file=/etc/loki/local-config.yaml
+  #     - "./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
+  #     - "./prometheus/rules.yml:/etc/prometheus/rules.yml"
+  #   ports:
+  #     - 9090:9090
+  # node-exporter:
+  #   image: prom/node-exporter
+  #   ports:
+  #     - 9100:9100
+  # alert-manager:
+  #   image: prom/alertmanager
+  #   volumes:
+  #     - "./prometheus/alertmanager.yml:/alertmanager/alertmanager.yml"
+  #   ports:
+  #     - 9093:9093
+  # loki:
+  #   image: grafana/loki:2.8.2
+  #   ports:
+  #     - "3100:3100"
+  #   volumes:
+  #     - ./loki/loki-config.yaml:/etc/loki/local-config.yaml
+  #     - loki_data:/loki
+  #     - ./loki/wal:/loki/wal     
+  #   command: -config.file=/etc/loki/local-config.yaml
 
-  promtail:
-    image: grafana/promtail:2.8.2
-    volumes:
-      - ./promtail/promtail-config.yaml:/etc/promtail/promtail-config.yaml
-      - /var/log:/var/log
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: -config.file=/etc/promtail/promtail-config.yaml
-  grafana:
-    image: grafana/grafana:latest
-    ports:
-      - "3000:3000"
-    volumes:
-      - grafana_data:/var/lib/grafana
-    environment:
-      - GF_SECURITY_ADMIN_USER=user
-      - GF_SECURITY_ADMIN_PASSWORD=password
-# networks:
-#   localprom:
-#     driver: bridge
+  # promtail:
+  #   image: grafana/promtail:2.8.2
+  #   volumes:
+  #     - ./promtail/promtail-config.yaml:/etc/promtail/promtail-config.yaml
+  #     - /var/log:/var/log
+  #     - /var/lib/docker/containers:/var/lib/docker/containers:ro
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: -config.file=/etc/promtail/promtail-config.yaml
+  # grafana:
+  #   image: grafana/grafana:latest
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - grafana_data:/var/lib/grafana
+  #   environment:
+  #     - GF_SECURITY_ADMIN_USER=user
+  #     - GF_SECURITY_ADMIN_PASSWORD=password

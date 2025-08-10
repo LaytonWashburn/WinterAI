@@ -1,25 +1,27 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useAuth } from '../../context/AuthContext';
+import { ErrorToast } from '../../components/error-toast/ErrorToast';
 
-import "./SignIn.css"
+import styles from "./SignIn.module.css";
 
 
-export const SignIn = () => {
+export const SignInPage = () => {
 
     const { login } = useAuth();
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState(false);
 
     const signin = async (e:React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         console.log(username);
-        // --- FORMATTING THE REQUEST BODY ---
-        const credentialsPayload = {
-            username: username,
-            plain_text_password: password,
-        };
+        // // --- FORMATTING THE REQUEST BODY ---
+        // const credentialsPayload = {
+        //     username: username,
+        //     plain_text_password: password,
+        // };
 
         const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/auth/login`, {
             method: "POST",
@@ -38,7 +40,11 @@ export const SignIn = () => {
             // Optionally redirect or show a success message
         } else {
             console.error("Sign up failed:", data);
-            // Optionally show an error message
+            setErrorMessage(true);
+            setTimeout(() => {
+                setErrorMessage(false);
+            }, 5000);
+            return;
         }
 
 
@@ -51,25 +57,31 @@ export const SignIn = () => {
 
 
     return(
-        <form action="" id="main" onSubmit={(e)=>{signin(e)}}>
-            <div id="main-container">
-                <span>Sign In Page</span>
-                <label htmlFor="username">Username</label>
+        <form action="" id={styles.main} onSubmit={(e)=>{signin(e)}}>
+           
+            <div id={styles.mainContainer}>
+                 <span id={styles.title}>Sign In</span>
                 <input 
                     type="text" 
                     value={username}
                     name="username" 
+                    placeholder="Username"
+                    id={styles.usernameInput}
                     onChange={(e) => {setUsername(e.target.value)}}
                 />
-                <label htmlFor="password">Password</label>
                 <input 
                     type="password"
+                    placeholder="Password"
                     value={password} 
                     name="password" 
+                    id={styles.passwordInput}
                     onChange={(e) => {setPassword(e.target.value)}}
                  />
-                <button id="submit-button" >Sign In</button>
+                <button id={styles.submitButton} >Sign In</button>
             </div>
+            {
+                errorMessage && <ErrorToast error_description='Login Failed' />
+            }
         </form>
     )
 }

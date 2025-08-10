@@ -1,0 +1,49 @@
+#error {
+    position: fixed;
+    bottom: 0;         /* place it a bit above the bottom */
+    left: 50%;            /* center horizontally */
+    transform: translate(-50%, 100%); /* start off-screen below, centered */
+    padding: 16px 24px;
+    min-width: 100vw;
+    height: 100px;   /* auto height to fit content */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    font-weight: bold;
+    background-color: #D32F2F;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInUp 0.3s forwards;
+    z-index: 1000;          /* make sure it’s on top */
+    box-sizing: border-box;
+    padding: 24px;
+}
+
+@keyframes slideInUp {
+  0% {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+/* Optional: adjust padding/size for larger screens */
+@media (min-width: 576px) {
+    #error {
+        padding: 20px 32px;
+        font-size: x-large;
+        height: 110px;
+    }
+}
+
+@media (min-width: 768px) {
+    #error {
+        padding: 24px 40px;
+        font-size: xx-large;
+        height: 125px;
+    }
+}

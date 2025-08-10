@@ -12,3 +12,9 @@ psycopg2-binary
 minio 
 pyjwt
 prometheus-fastapi-instrumentator
+duckduckgo-search
+langchain-community
+pytest
+pytest-asyncio
+pytest-cov
+httpx
