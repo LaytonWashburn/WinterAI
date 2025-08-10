@@ -106,7 +106,6 @@ export const SignUp = () => {
     return (
         <form id="signup" className="flex flex-column flex-center-all" onSubmit={handleSubmit}>
 
-
             <div id="container" className="flex flex-column flex-center-all margin-top-16 margin-bottom-16 width-50-percent">
 
                 <h1 className="text-2xl">Sign Up</h1>
@@ -159,17 +158,18 @@ export const SignUp = () => {
                         className="margin-top-8 margin-bottom-16"
                         style={{ display: "flex", flexDirection: "column", justifyContent:"start" }}
                     >
-                        <label
+                        {/* <label
                         htmlFor={name}
                         className="text-lg"
                         style={{ marginBottom: "4px", fontWeight: "500", color: "#333" }}
                         >
                         {label}
-                        </label>
+                        </label> */}
                         <input
                         type={type}
                         id={name}
                         name={name}
+                        placeholder={label}
                         required={["username", "password", "email"].includes(name)}
                         value={formData[name]}
                         onChange={handleChange}
@@ -179,7 +179,6 @@ export const SignUp = () => {
                             fontSize: "16px",
                             borderRadius: "8px",
                             border: "1px solid rgba(0, 0, 0, 0.2)",
-                            outlineColor: "#4CAF50",
                             transition: "border-color 0.2s ease-in-out",
                         }}
                         />
