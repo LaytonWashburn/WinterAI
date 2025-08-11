@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { DashboardPage } from '../pages/dashboard/DashboardPage';
 import { ProtectedRoute } from "../components/auth/ProtectedRoute";
-import { Guest } from '../pages/Guest';
+import { GuestPage } from '../pages/guest/GuestPage';
 import { GuestLayout } from "../layouts/guest/GuestLayout";
 import { SignUpPage } from "../pages/signup/SignUp";
 import { SignInPage } from "../pages/signin/SignIn";
@@ -14,7 +14,7 @@ import "../index.css";
 
 // Define an array of your guest route configurations
 const guestRoutes = [
-  { index: true, element: <Guest /> },
+  { index: true, element: <GuestPage /> },
   { path: "signup", element: <SignUpPage/> },
   { path: "signin", element: <SignInPage/> },
 ];

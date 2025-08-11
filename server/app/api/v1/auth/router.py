@@ -1,8 +1,7 @@
-from fastapi import APIRouter, Depends, Form, HTTPException, status
+from fastapi import APIRouter, Depends, Form
 from sqlalchemy.orm import Session
 from app.services.db.database import get_db
-from app.models.user import User  # Assuming you have a User model defined in models/user.py
-from ..auth.service.password import verify_password 
+from app.api.v1.auth.service.password import verify_password 
 from app.api.v1.auth.service.auth import authenticate_user
 
 

@@ -1,0 +1,18 @@
+#guest {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 16px;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    width: 100vw;
+}
+
+@media (min-width: 576px) {
+    #dashboard {
+        font-size: xxx-large;
+    }
+    
+}

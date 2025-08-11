@@ -6,12 +6,12 @@ from sqlalchemy.orm import Session
 from datetime import timedelta
 from app.services.db.database import get_db
 from app.models.user import User  # Assuming you have a User model defined in models/user.py
-from ..auth.service.password import hash_password, verify_password  # Assuming you have a utility function for hashing passwords
+from ..auth.service.password import verify_password  # Assuming you have a utility function for hashing passwords
 from .profile.profile import profile_router
 from ..auth.service.auth import create_access_token
 from ..auth.schema.auth import AuthSuccessfulResponse
 from ..user.schema.user import UserPydanticRequest, UserPydanticResponse  # Assuming you have a Pydantic model defined in routers/pydantic/user.py
-from app.api.v1.user.service.users import get_user_by_username
+from app.api.v1.user.service.users import get_user_by_username, create_user_by_user
 
 user_router = APIRouter(prefix="/users", tags=["User"])
 
@@ -65,45 +65,18 @@ async def token(form_data: OAuth2PasswordRequestForm = Depends(),
 
 
 @user_router.post("/create")
-async def create_user(user: UserPydanticRequest, db: Session = Depends(get_db)):
+async def create_user(user: UserPydanticRequest,
+                      db: Session = Depends(get_db)):
     print("Creating user:", user)
-    new_user = User(
-        username=user.username,
-        hashed_password=hash_password(user.password),  # Assuming you handle password hashing elsewhere
-        first_name=user.first_name,
-        last_name=user.last_name,
-        full_name=user.full_name,
-        date_of_birth=user.date_of_birth,
-        email=user.email,
-        profile_picture=user.profile_picture
-    ) # Upacks the Pydantic model into a dictionary
-    # Assuming User model has a constructor that accepts keyword arguments
-    
-    try:
-        db.add(new_user)
-        db.commit()
-        db.refresh(new_user)
-    except IntegrityError as e:
-        db.rollback()
-        # Check if it's a unique violation (Postgres error code '23505')
-        if "unique constraint" in str(e.orig).lower() or getattr(e.orig, 'pgcode', '') == '23505':
-            raise HTTPException(status_code=400, detail="Username or email already exists") from e
-        else:
-            raise HTTPException(status_code=400, detail="Database integrity error") from e
-    except OperationalError as e:
-        db.rollback()
-        raise HTTPException(status_code=500, detail="Database connection failed") from e
-    except Exception as e:
-        db.rollback()
-        raise HTTPException(status_code=500, detail="Unexpected error") from e
 
+    # Create User
+    new_user = create_user_by_user(user=user, db=db)
 
-     # 3. Generate a JWT token for the newly created user
-    access_token_expires = timedelta(minutes=360)
+    # Generate a JWT token for the newly created user
     print("Generating access token for new user")
     access_token = create_access_token(
         data={"sub": new_user.username, "user_id": new_user.id}, # 'sub' is standard, user_id is useful
-        expires_delta=access_token_expires
+        expires_delta=timedelta(minutes=360)
     )
 
     # Return the token and the user's details
@@ -114,7 +87,3 @@ async def create_user(user: UserPydanticRequest, db: Session = Depends(get_db)):
         token_type="bearer",
         user=UserPydanticResponse.model_validate(new_user)  # Pass the SQLAlchemy user object here
     )
-
-
-
-
