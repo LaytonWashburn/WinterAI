@@ -12,9 +12,13 @@ auth_router = APIRouter(prefix="/auth")
 async def read_root():
     return {"message": "Auth Service Root"}
 
+
+
 @auth_router.post("/health")
 async def health_check():
     return {"status": "auth service is healthy"}
+
+
 
 @auth_router.post("/login")
 async def login(username: str = Form(...),  # Required form field

@@ -41,13 +41,22 @@ jobs:
           pip install -r requirements.txt
 
       # Run server Pytest tests
-      - name: Run server Pytest tests
+      
+      # Run server Pytest tests
+      - name: Show directory and PYTHONPATH info
         working-directory: ./server
-        run: pytest --maxfail=1 --disable-warnings -q
+        env:
+          PYTHONPATH: .
+        run: |
+          echo "PYTHONPATH: $PYTHONPATH"
+          pwd
+          ls -la
+          ls -la app
+          pytest --maxfail=1 --disable-warnings -q
 
-      # Set up Docker Buildx for multi-platform builds
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+      # # Set up Docker Buildx for multi-platform builds
+      # - name: Set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v2
 
       # # Log in to Docker Hub
       # - name: Log in to Docker Hub

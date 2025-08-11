@@ -11,6 +11,7 @@ from .profile.profile import profile_router
 from ..auth.service.auth import create_access_token
 from ..auth.schema.auth import AuthSuccessfulResponse
 from ..user.schema.user import UserPydanticRequest, UserPydanticResponse  # Assuming you have a Pydantic model defined in routers/pydantic/user.py
+from app.api.v1.user.service.users import get_user_by_username
 
 user_router = APIRouter(prefix="/users", tags=["User"])
 
@@ -33,8 +34,10 @@ async def token(form_data: OAuth2PasswordRequestForm = Depends(),
     # db: Session = Depends(get_db)
 
     # 1. Retrieve the user from the database by username
-    user = db.query(User).filter(User.username == form_data.username).first()
+    user = get_user_by_username(username=form_data.username, User=User)
     print(user)
+    # user = db.query(User).filter(User.username == form_data.username).first()
+    # print(user)
 
     # 2. Check if user exists AND verify the password
     # verify_password takes the PLAIN password (from form_data) and the STORED HASHED password (from DB)
