@@ -5,6 +5,7 @@ import { GuestPage } from '../pages/guest/GuestPage';
 import { GuestLayout } from "../layouts/guest/GuestLayout";
 import { SignUpPage } from "../pages/signup/SignUp";
 import { SignInPage } from "../pages/signin/SignIn";
+import { ResumePage } from "../pages/features/resume/ResumePage";
 import { HomeLayout } from "../layouts/home/HomeLayout";
 import { Services } from "../pages/services/Services";
 import { SearchPage } from "../features/search/SearchPage";
@@ -24,7 +25,8 @@ const protectedRoutes = [
   { path: "dashboard", element: <DashboardPage /> },
   { path: "services", element: <Services /> },
   { path: "search", element: <SearchPage/>},
-  {path: "viewer", element: <DynamicModel/>}
+  {path: "viewer", element: <DynamicModel/>},
+  {path: "resume", element: <ResumePage/>}
 ];
 
 export const router = createBrowserRouter([

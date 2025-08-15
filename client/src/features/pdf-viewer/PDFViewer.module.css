@@ -1,0 +1,9 @@
+.pdfContainer {
+  width: 100%;
+  max-width: 800px;  /* optional max width */
+  margin: 0 auto;    /* center horizontally */
+}
+
+.pdfPage {
+  margin-bottom: 16px; /* spacing between pages */
+}
