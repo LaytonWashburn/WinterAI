@@ -13,9 +13,11 @@ export const GuestWelcome = () => {
           Discover how to manage your life with our intelligent AI platform.
         </p>
         <p className={styles.p2}>
-            Our platfrom provides an easy way to arrange and organize your responsibilities and tasks.
+            Our platfrom provides an easy way to arrange and organize your responsibilities using AI.
         </p>
-        
+        <p className={styles.p2}>
+          Less stress and more focus on Life's important details
+        </p>
       </div>
         <img 
             src={welcome} 

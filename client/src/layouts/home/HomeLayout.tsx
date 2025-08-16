@@ -5,7 +5,7 @@ import "./HomeLayout.css";
 export const HomeLayout = () => {
   return (
       <>
-        <Navbar />
+        <Navbar isGuest={false} />
         <div id="outlet-wrapper">
           <Outlet />
         </div>

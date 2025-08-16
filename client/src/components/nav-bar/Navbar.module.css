@@ -16,11 +16,11 @@
     min-width: 100%;
     position: sticky;
     top: 0;
-    background: linear-gradient(
+    /* background: linear-gradient(
         to right,
-        rgba(140, 125, 175, 0.5),
-        rgba(160, 145, 195, 0.9)
-    );
+        rgba(170, 155, 205, 0.2),
+        rgba(190, 175, 220, 0.9)
+    ); */
     z-index: 1000;
     transition: box-shadow 0.2s ease;
 }
@@ -28,8 +28,8 @@
 .notScrolled {
     background: linear-gradient(
         to right,
-        rgba(140, 125, 175, 0.5),
-        rgba(160, 145, 195, 0.9)
+        rgba(170, 155, 205, 0.2),
+        rgba(190, 175, 220, 0.9)
     );
 }
 

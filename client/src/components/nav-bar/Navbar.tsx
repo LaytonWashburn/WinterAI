@@ -7,26 +7,31 @@ import { TabBar } from '../tab-bar/TabBar';
 import styles from './Navbar.module.css';
 import "../../css/material-symbol-outline.css";
 
-export const Navbar = () => {
 
+interface NavbarProps {
+  isGuest?: boolean;
+}
+
+export const Navbar = ({ isGuest = false }: NavbarProps) => {
     const { isAuthenticated, logout, user, token } = useAuth();
     const [profilePictureUrl, setProfilePictureUrl] = useState<string>("");
     const [isNavdrawerOpen, setIsNavdrawerOpen] = useState<boolean>(false);
-
     const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
     useEffect(() => {
+        if (!isGuest) {
+            setIsScrolled(true); // Always use white for non-guest
+            return;
+        }
         const handleScroll = () => {
-            // Only show gradient at very top (scrollY === 0)
             setIsScrolled(window.scrollY > 0);
         };
         window.addEventListener('scroll', handleScroll);
-        // Set initial state
         handleScroll();
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [isGuest]);
 
     const fetchProfilePicture = async () => {
 
@@ -88,7 +93,7 @@ export const Navbar = () => {
 
 
     return (
-        <nav className={`${styles.navbar} ${styles.shadowUnderneath} ${isScrolled ? styles.scrolled : styles.notScrolled}`}> 
+        <nav className={`${styles.navbar} ${styles.shadowUnderneath} ${isScrolled ? styles.scrolled : (isGuest ? styles.notScrolled : '')}`}> 
 
             {isAuthenticated && <TabBar />}
             {
