@@ -6,6 +6,7 @@ interface AuthContextType {
   login: (token: string, user: any) => void;
   logout: () => void;
   isAuthenticated: boolean;
+  loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -13,6 +14,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
 
   // On mount, load from localStorage with safe parsing
   useEffect(() => {
@@ -32,6 +34,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     } else {
       setUser(null);
     }
+    setLoading(false);
   }, []);
 
   const login = (newToken: string, userData: any) => {
@@ -55,7 +58,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const isAuthenticated = Boolean(token);
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout, isAuthenticated }}>
+    <AuthContext.Provider value={{ user, token, login, logout, isAuthenticated, loading }}>
       {children}
     </AuthContext.Provider>
   );

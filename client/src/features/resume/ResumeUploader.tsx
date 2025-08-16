@@ -3,13 +3,17 @@ import styles from './ResumeUploader.module.css';
 
 interface ResumeUploaderProps {
     uploadFile(file: File): any;
+    jobPosting: string;
     showDelete: boolean;
-    onDelete?: () => void;
+    onDelete: () => void;
+    onStart: () => void;
+    onJobPosting: () => void;
 }
 
-export const ResumeUploader = ({ uploadFile, showDelete, onDelete }: ResumeUploaderProps) => {
+export const ResumeUploader = ({ uploadFile, jobPosting, showDelete, onDelete, onStart, onJobPosting }: ResumeUploaderProps) => {
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log("Uploading the file");
         if (e.target.files && e.target.files.length > 0) {
             uploadFile(e.target.files[0]);
         }
@@ -43,9 +47,21 @@ export const ResumeUploader = ({ uploadFile, showDelete, onDelete }: ResumeUploa
                 className={styles.fileInput}
             />
 
-            <button className={styles.reviseButton}>
+            <button 
+                className={styles.reviseButton}
+                onClick={onStart}
+            >
                 Start
             </button>
+            <label htmlFor="jobText">Job Description</label>
+            <textarea
+                id="jobText"
+                value={jobPosting}
+                onChange={(e) => onJobPosting(e.target.value)}
+                placeholder="Paste the job posting here"
+                rows={6} // adjust height
+                style={{ width: '100%', resize: 'vertical' }}
+            />
         </section>
     );
 };

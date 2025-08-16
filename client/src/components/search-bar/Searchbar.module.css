@@ -1,10 +1,10 @@
 #search_bar {
-  display: flex;
-  flex-direction: row;
+  display: none;
+  /* flex-direction: row;
   position: fixed;
   width: 100vw;
   bottom: 60px;
-  background-color: white;
+  background-color: white; */
 }
 
 .search_bar_inner {

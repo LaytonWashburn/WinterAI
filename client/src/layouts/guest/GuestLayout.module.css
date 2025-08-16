@@ -1,5 +1,6 @@
 main {
   display: flex;
   flex: 1;             /* take up remaining space */
+  min-width: 100%;
   /* overflow-y:scroll;      allow scrolling inside main area if needed */
 }

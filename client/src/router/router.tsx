@@ -13,9 +13,8 @@ import { DynamicModel } from "../features/viewer/ModelViewer";
 import { rootLoader } from "../loaders/RootLoader";
 import "../index.css";
 
-// Define an array of your guest route configurations
 const guestRoutes = [
-  { index: true, element: <GuestPage /> },
+  { index: true, element: <GuestPage />, loader: rootLoader },
   { path: "signup", element: <SignUpPage/> },
   { path: "signin", element: <SignInPage/> },
 ];
@@ -32,21 +31,16 @@ const protectedRoutes = [
 export const router = createBrowserRouter([
   {
     path: "/",
-    loader: rootLoader,
     element: <GuestLayout />,
-    // Use the guestRoutes array to create the children routes
     children: guestRoutes,
   },
   {
-    element: <HomeLayout />,
-    // Use map() to create the children routes and wrap them in ProtectedRoute
-    children: protectedRoutes.map(route => ({
-      path: route.path,
-      element: (
-        <ProtectedRoute>
-          {route.element}
-        </ProtectedRoute>
-      ),
-    })),
+    path: "/",
+    element: (
+      <ProtectedRoute>
+        <HomeLayout />
+      </ProtectedRoute>
+    ),
+    children: protectedRoutes,
   },
 ]);

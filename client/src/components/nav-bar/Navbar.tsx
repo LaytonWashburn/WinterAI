@@ -10,8 +10,23 @@ import "../../css/material-symbol-outline.css";
 export const Navbar = () => {
 
     const { isAuthenticated, logout, user, token } = useAuth();
-    const [profilePictureUrl, setProfilePictureUrl] = useState("");
-    const [isNavdrawerOpen, setIsNavdrawerOpen] = useState(false);
+    const [profilePictureUrl, setProfilePictureUrl] = useState<string>("");
+    const [isNavdrawerOpen, setIsNavdrawerOpen] = useState<boolean>(false);
+
+    const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Only show gradient at very top (scrollY === 0)
+            setIsScrolled(window.scrollY > 0);
+        };
+        window.addEventListener('scroll', handleScroll);
+        // Set initial state
+        handleScroll();
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const fetchProfilePicture = async () => {
 
@@ -56,6 +71,7 @@ export const Navbar = () => {
 
     }
 
+
     useEffect(() => {
         // This useEffect will run when `isAuthenticated` or `user` or `token` changes.
         // This means it will trigger on login, logout, and initial load if authenticated.
@@ -72,7 +88,8 @@ export const Navbar = () => {
 
 
     return (
-        <nav id={styles.navbar} className={`${styles.shadowUnderneath}`}>   
+        <nav className={`${styles.navbar} ${styles.shadowUnderneath} ${isScrolled ? styles.scrolled : styles.notScrolled}`}> 
+
             {isAuthenticated && <TabBar />}
             {
                 isAuthenticated && <NavDrawer 

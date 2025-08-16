@@ -1,3 +1,5 @@
+
+import { GuestWelcome } from "../../features/guest/welcome/GuestWelcome";
 import styles from "./GuestPage.module.css";
 
 
@@ -6,7 +8,7 @@ export const GuestPage = () => {
         <section
             id={styles.guest}
         >  
-         Welcome to Winter AI!
+            <GuestWelcome />
         </section> 
     );
 }

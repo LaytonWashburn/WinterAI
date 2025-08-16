@@ -4,7 +4,9 @@
   The original code was implicitly defining these with a column layout.
 */
 
-#navbar {
+/* Mobile-First Base Styles */
+
+.navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -12,10 +14,28 @@
     height: clamp(50px, 10vh, 85px);
     font-size: large;
     min-width: 100%;
-    position: sticky; 
+    position: sticky;
     top: 0;
-    background-color: white; 
-    z-index: 1000; 
+    background: linear-gradient(
+        to right,
+        rgba(140, 125, 175, 0.5),
+        rgba(160, 145, 195, 0.9)
+    );
+    z-index: 1000;
+    transition: box-shadow 0.2s ease;
+}
+
+.notScrolled {
+    background: linear-gradient(
+        to right,
+        rgba(140, 125, 175, 0.5),
+        rgba(160, 145, 195, 0.9)
+    );
+}
+
+.scrolled {
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
 #rightNavSection, 
@@ -48,6 +68,7 @@
 
 .linkContainer {
     display: none;
+    color: black;
 }
 
 .rightLink {
@@ -58,9 +79,9 @@
 
 
 
-.shadowUnderneath {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-}
+/* .shadowUnderneath {
+
+} */
 
 
 /*
