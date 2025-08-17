@@ -1,0 +1,8 @@
+
+
+.content {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    font-size: small;
+}

@@ -27,7 +27,7 @@ export const ResumePage = () => {
         formData.append("file", file);
         formData.append("job_posting", jobPosting);
         console.log("Here is the token: ", token);
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/resume`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/resume/`, {
             method: "post",
             body: formData,
             headers: {

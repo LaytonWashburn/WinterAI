@@ -1,26 +1,42 @@
-
 #dashboard {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
+    flex-direction: column;
+    align-items: stretch;      /* Make children stretch full width */
     padding: 16px;
-    font-size: xx-large;
+    font-size: large;
+    box-sizing: border-box;
     font-weight: bold;
     text-align: center;
-    width: 100vw;
+    font-family: 'Montserrat', sans-serif;
+    max-width: inherit;
+    min-height: 100vh;
 }
 
-@media (min-width: 576px) {
-    #dashboard {
-        font-size: xxx-large;
-    }
-    
+/* Optional: make a container inside grow/shrink with content */
+.metrics {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    flex-wrap: wrap;           /* wrap items if they overflow */
+    width: 100%;
+    height: 700px;
 }
-/* 
-@media (min-width: 768px) {
-    #dashboard {
-        font-size: xx-large;
-    }
-    
-} */
+
+
+/* Left panel grows to take remaining space */
+.metricsLeft {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* space between stacked widgets */
+}
+
+/* Right panel fixed width, scrollable if too tall */
+.metricsRight {
+    flex: 0 0 300px; /* adjust width as needed */
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* space between stacked widgets */
+    max-height: 80vh; /* keeps dashboard from getting too tall */
+    overflow-y: auto;
+}

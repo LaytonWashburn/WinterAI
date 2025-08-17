@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from app.models.action import Action
 
-def get_recent_actions(db: Session, limit: int = 10, offset: int = 0) -> List[Action]:
+def fetch_recent_actions(db: Session, limit: int = 10, offset: int = 0) -> List[Action]:
     """
     Retrieve the most recent actions from the database.
     """
