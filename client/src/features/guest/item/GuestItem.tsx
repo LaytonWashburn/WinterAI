@@ -23,7 +23,7 @@ export const GuestItem = ({ title, paragraphs, image, item,
                 <div>
                     <img src={image} alt="item" />
                 </div>
-                <div>
+                <div className={styles.infoWrapper}>
                     <h1>
                         { title }
                     </h1>

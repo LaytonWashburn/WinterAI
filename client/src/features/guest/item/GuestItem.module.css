@@ -60,12 +60,18 @@
 
     .contentWrapper {
         display: flex;
+        justify-content: space-around;
         align-items: center;
         width: 600px;
         height: 450px;
         padding: 8px;
         border-radius: 16px;
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .infoWrapper {
+        width: 350px; 
+        max-width: 100%;
     }
 }
 
@@ -80,4 +86,10 @@
         width: 925px;
         border-radius: 16px;
     }
+
+    .infoWrapper {
+        width: 350px; 
+        max-width: 100%;
+    }
+
 }
