@@ -8,5 +8,69 @@
   text-align: center;
   font-size: 0.875rem;
   flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.footerContainer {
   display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal columns */
+  justify-items: center; /* centers content horizontally in each column */
+  align-items: flex-start;   /* centers content vertically in each column */
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 8px;
+}
+
+.sectionHeader {
+  text-decoration: underline;
+  font-size: large;
+  color: #F5F5F5;
+}
+
+.sectionHeader:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.sectionLink:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.sectionLink {
+  color: #A0A0A0;
+  padding: 4px;
+}
+
+.imageWrapper {
+  width: 150px;
+  height: 150px;
+}
+
+.imageWrapper img {
+  max-width: 100%;
+}
+
+
+@media (min-width: 578px) {
+  .footerContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .section {
+    padding: 40px;
+  }
+
+  .sectionHeader {
+    font-size: x-large;
+  }
 }
