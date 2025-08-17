@@ -1,4 +1,4 @@
-.navbar {
+/* .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -9,25 +9,140 @@
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0); 
     transition: box-shadow 0.2s ease;
 }
-/* .navbar {
+
+
+.notScrolled {
+    height: clamp(50px, 65px, 85px);
+    background: linear-gradient(
+        to right,
+        rgba(170, 155, 205, 0.2),
+        rgba(190, 175, 220, 0.9)
+    );
+}
+
+.scrolled {
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
+#rightNavSection, 
+#leftNavSection {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#logoLink {
+    display: flex;
+    text-decoration: none;
+    padding: 0 16px 0 16px;
+    font-size:xx-large;
+    font-weight: bold;
+}
+
+#menuButton {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 16px 0 16px;
+    margin: 0;
+}
+
+.linkContainer {
+    display: none;
+    color: black;
+}
+
+.rightLink {
+    display: flex;
+    text-decoration: none;
+    padding: 0 16px 0 16px;
+}
+
+
+@media (min-width: 576px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        height: clamp(50px, 10vh, 85px);
+        background-color: white;
+    }
+
+    #leftNavSection,
+    #rightNavSection {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        align-items: center;
+    }
+
+    #linkLogo {
+        padding: 0;
+    }
+
+
+    .linkContainer {
+        display: flex;
+        flex-direction: row;
+        font-size: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: auto;
+        padding: 0 16px 0 16px;
+        text-decoration: none;
+    }
+
+    .linkContainer:hover {
+        color: #87CEEB;
+        transform: scale(1.05);
+    }
+    
+    #profile-pic {
+        border-radius: 50%;
+    }
+
+    #rightNavSection {
+        justify-content: center;
+        padding-right: 12px;
+    }
+}
+
+ */
+
+ /*
+  Mobile-First Base Styles
+  These styles are for the smallest screens by default.
+  The original code was implicitly defining these with a column layout.
+*/
+
+/* Mobile-First Base Styles */
+
+.navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: clamp(50px, 10vh, 85px);
     font-size: large;
-    min-width: inherit;
+    min-width: 100%;
     position: sticky;
     top: 0;
+    /* background: linear-gradient(
+        to right,
+        rgba(170, 155, 205, 0.2),
+        rgba(190, 175, 220, 0.9)
+    ); */
     z-index: 1000;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0); 
     transition: box-shadow 0.2s ease;
-} */
+}
 
 .notScrolled {
-    height: clamp(50px, 65px, 85px);
     background: linear-gradient(
         to right,
         rgba(170, 155, 205, 0.2),
@@ -85,22 +200,19 @@
 
 } */
 
-/* Apply only to small screens (mobile) */
-@media (max-width: 575px) {
-  .navbar {
-    height: 65px;         
-    flex-shrink: 0;           
-    backface-visibility: hidden;
-  }
-}
 
-
+/*
+  Tablet and Small Desktop Styles
+  These styles apply to screens 576px and wider.
+*/
 @media (min-width: 576px) {
-    .navbar {
+    /* Change the navbar to a row layout */
+    #navbar {
         flex-direction: row;
         justify-content: space-between;
         height: clamp(50px, 10vh, 85px);
         background-color: white;
+        overflow-x: hidden;
     }
 
     #leftNavSection,
@@ -142,5 +254,3 @@
         padding-right: 12px;
     }
 }
-
-

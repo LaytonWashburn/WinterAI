@@ -1,13 +1,11 @@
 #signup{
     width: 100%;
-    /* box-sizing: border-box; */
     padding: 0 24px 0 24px;
-    /* overflow-y: scroll; */
-    flex: 1 1 auto;       /* allow to grow and shrink */
-    /* min-height: 0;        allow flex container to limit height */
+    flex: 1 1 auto; 
     display: flex;
     justify-content: center;
     align-items: center;
+    height: auto;
 }
 
 #signup #container {
@@ -48,11 +46,14 @@
 }
 
 @media (min-width: 576px) {
+    #signup {
+        height: 800px;
+    }
     #container{
         width: 450px;
         height: 75%;
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-        height: inherit;
+        /* height: inherit; */
         border-radius: 20px;
         /* border: solid #5A3E99; */
     }
