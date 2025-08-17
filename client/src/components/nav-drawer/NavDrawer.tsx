@@ -32,7 +32,7 @@ interface NavDrawerProps {
 // Data array for all navigation items
 const navItemsData = [
   { id: 1, href: "/dashboard", label: "Dashboard", icon: "dashboard" },
-  { id: 2, href: "/projects", label: "Projects", icon: "folder" },
+  // { id: 2, href: "/projects", label: "Projects", icon: "folder" },
   { id: 3, href: "/services", label: "Services", icon: "box" },
   { id: 4, href: "/careers", label: "Careers", icon: "work" },
   { id: 5, href: "/about", label: "About", icon: "info" },

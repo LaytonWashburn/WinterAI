@@ -1,0 +1,10 @@
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    flex-wrap: wrap;
+    max-width: inherit;
+}

@@ -312,7 +312,7 @@ export const Navbar = ({ isGuest = false }: NavbarProps) => {
                 {
                 isAuthenticated && 
                 <Link 
-                    className={`${styles.linkContainer} ${styles.rightLink}`} 
+                    className={`${styles.authButton} ${styles.linkContainer} ${styles.rightLink}`} 
                     onClick={() => logout()}>
                     Log Out
                 </Link>

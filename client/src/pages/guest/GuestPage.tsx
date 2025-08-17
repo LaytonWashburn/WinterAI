@@ -1,6 +1,7 @@
 
 import { GuestWelcome } from "../../features/guest/welcome/GuestWelcome";
 import { GuestItemCarousel } from "../../features/guest/carousel/guestItemCarousel";
+import { GuestMission } from "../../features/guest/misison/GuestMission";
 import type { GuestCarouselItemData } from "../../types/guestCarouselType";
 import styles from "./GuestPage.module.css";
 import financeImg from "../../assets/finance.png";
@@ -20,6 +21,7 @@ export const GuestPage = () => {
         >  
             <GuestWelcome />
             <GuestItemCarousel items={items}/>
+            <GuestMission />
         </section> 
     );
 }

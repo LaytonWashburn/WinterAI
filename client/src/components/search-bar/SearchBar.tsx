@@ -16,7 +16,7 @@ export const SearchBar = () => {
   const handleSubmit = (event: React.FormEvent) => {
   event.preventDefault();
   if (query && query.trim()) {
-    navigate(`/search?query=${encodeURIComponent(query.trim())}`);
+    navigate(`/services/career/search?query=${encodeURIComponent(query.trim())}`);
   } else {
     showError('No Search Query Provided, Please Input A Query'); // show the toast
   }

@@ -7,9 +7,10 @@ import { SignUpPage } from "../pages/signup/SignUp";
 import { SignInPage } from "../pages/signin/SignIn";
 import { ResumePage } from "../pages/features/resume/ResumePage";
 import { HomeLayout } from "../layouts/home/HomeLayout";
-import { Services } from "../pages/services/Services";
+import { ServicesPage } from "../pages/services/ServicesPage";
 import { SearchPage } from "../features/search/SearchPage";
 import { DynamicModel } from "../features/viewer/ModelViewer";
+import { CareerPage } from "../pages/features/career/CareerPage";
 import { rootLoader } from "../loaders/RootLoader";
 import "../index.css";
 
@@ -19,13 +20,25 @@ const guestRoutes = [
   { path: "signin", element: <SignInPage/> },
 ];
 
+
 // Define an array of your protected route configurations
 const protectedRoutes = [
   { path: "dashboard", element: <DashboardPage /> },
-  { path: "services", element: <Services /> },
-  { path: "search", element: <SearchPage/>},
+  { 
+  path: "services", 
+  element: <ServicesPage />, 
+  },
+  {
+  path: "services/career",
+  element: <CareerPage />
+  },
+  {
+    path: "services/career/resume", 
+    element: <ResumePage/>
+  },
+  { path: "services/career/search", element: <SearchPage/>},
   {path: "viewer", element: <DynamicModel/>},
-  {path: "resume", element: <ResumePage/>}
+
 ];
 
 export const router = createBrowserRouter([

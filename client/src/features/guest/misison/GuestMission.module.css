@@ -1,0 +1,65 @@
+.mission {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    max-width: inherit;
+    flex-wrap: wrap;
+    margin: 12px;
+}
+.mission hr {
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.missionTitle h1 {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.missionWrapper {
+  min-width: 100%;
+}
+
+.verticalLine {
+    display: none;
+}
+
+
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: medium;
+    font-weight: normal;
+}
+
+.infoContainer {
+
+}
+
+
+@media (min-width: 576px) {
+    .mission {
+        flex-direction: row;
+        margin: 36px;
+    }
+    .verticalLine {
+        display: unset;
+        border-left: 2px solid black; /* Adjust color and thickness as needed */
+        height: 200px; /* Adjust the height to your desired length */
+        margin: 0 20px; /* Optional: adds space on the sides */
+    }
+    .mission hr {
+        display: none;
+    }
+    .missionTitle {
+        display: flex;
+        flex-direction: row;
+    }
+}

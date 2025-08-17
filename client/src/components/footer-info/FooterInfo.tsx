@@ -2,13 +2,16 @@ import { Link } from 'react-router-dom';
 import winteraiLogo from "../../assets/winterai_logo_t.png"
 import styles from "./FooterInfo.module.css";
 
-export const FooterInfo = () => {
 
+interface FooterInfoProps {
+    needsBottomPixels: boolean;
+}
 
+export const FooterInfo = ({ needsBottomPixels = false }: FooterInfoProps) => {
 
     return (
         <footer
-            className={styles.footer}
+            className={`${styles.footer} ${needsBottomPixels ? styles.bottomPixels : ''}`}
         >
             <div
                 className={styles.imageWrapper}
@@ -42,7 +45,7 @@ export const FooterInfo = () => {
                 >
                     <Link className={styles.sectionHeader}>Developer</Link>
                     <Link className={styles.sectionLink}>Documentation</Link>
-                    <Link className={styles.sectionLink}>Api Keys</Link>
+                    <Link className={styles.sectionLink}>API Keys</Link>
                     <Link className={styles.sectionLink}>Blog</Link>
                     <Link className={styles.sectionLink}>Projects</Link>
                 </div>

@@ -57,6 +57,9 @@
   max-width: 100%;
 }
 
+.bottomPixels {
+  padding-bottom: 60px;
+}
 
 @media (min-width: 578px) {
   .footerContainer {
@@ -72,5 +75,9 @@
 
   .sectionHeader {
     font-size: x-large;
+  }
+
+  .bottomPixels {
+    padding-bottom: 0px;
   }
 }

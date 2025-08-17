@@ -3,18 +3,12 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    width: 100vw;
+    max-width: 100vw;
 }
 
 @media (min-width: 576px) {
     #services {
         display: grid;
-        /*
-            This is the core of the simplified approach.
-            - `auto-fit`: Creates as many columns as can fit in the container.
-            - `minmax(250px, 1fr)`: Makes each column at least 250px wide, but allows it to
-            expand to fill remaining space if needed.
-        */
         grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
         grid-auto-flow: row;
         grid-gap: 2px;

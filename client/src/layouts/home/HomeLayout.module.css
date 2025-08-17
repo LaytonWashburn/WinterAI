@@ -4,8 +4,11 @@
     padding-top: 85px;
 }
 
+.mainWrapper {
+  min-height: 100vh
+}
 
-#outlet-wrapper {
+#outletWrapper {
     display: flex;
     justify-self: center;
     /* flex: 1; This takes up remaining space */
