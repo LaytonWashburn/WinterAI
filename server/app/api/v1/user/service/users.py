@@ -1,7 +1,7 @@
 from fastapi import  Depends, HTTPException
 from sqlalchemy.exc import IntegrityError, OperationalError
 from sqlalchemy.orm import Session
-from app.services.db.database import get_db
+from app.utils.db.database import get_db
 from app.models.user import User
 from app.api.v1.auth.service.password import hash_password
 

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, Form
 from sqlalchemy.orm import Session
-from app.services.db.database import get_db
+from app.utils.db.database import get_db
 from app.api.v1.auth.service.password import verify_password 
 from app.api.v1.auth.service.auth import authenticate_user
 

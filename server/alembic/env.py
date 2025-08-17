@@ -4,6 +4,7 @@ from sqlalchemy import pool
 from alembic import context
 from app.schemas.base import Base  # Import the base class for models
 from app.models.user import User  # Import any other models here
+from app.models.action import Action
 import os
 
 # this is the Alembic Config object, which provides

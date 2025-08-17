@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi import UploadFile, File
 from fastapi.responses import StreamingResponse, Response , JSONResponse
 from minio.error import S3Error
-from app.services.minio.client import minioClient, profile_picture_bucket
-from app.services.db.database import get_db
+from app.utils.minio.client import minioClient, profile_picture_bucket
+from app.utils.db.database import get_db
 from app.models.user import User
 from sqlalchemy.orm import Session
 import io

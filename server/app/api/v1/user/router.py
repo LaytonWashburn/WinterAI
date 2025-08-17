@@ -4,7 +4,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.exc import IntegrityError, OperationalError
 from sqlalchemy.orm import Session
 from datetime import timedelta
-from app.services.db.database import get_db
+from app.utils.db.database import get_db
 from app.models.user import User  # Assuming you have a User model defined in models/user.py
 from ..auth.service.password import verify_password  # Assuming you have a utility function for hashing passwords
 from .profile.profile import profile_router
