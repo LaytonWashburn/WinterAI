@@ -61,7 +61,8 @@ export const DashboardRecentActivity = ( {}) => {
                 {
                     activities && activities.map((activity) => {
                         return(
-                            <DashboardActivity 
+                            <>
+                                <DashboardActivity 
                                 service={activity.service}
                                 action={activity.action}
                                 details={activity.details}
@@ -72,7 +73,9 @@ export const DashboardRecentActivity = ( {}) => {
                                                                     hour: "2-digit",
                                                                     minute: "2-digit",
                                                                 })}
-                            />
+                                />
+                               
+                            </>
                         )
                     })
                 }

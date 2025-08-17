@@ -1,8 +1,59 @@
-
+/* 
 
 .content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: flex-start;
     overflow: auto;
     font-size: small;
 }
+
+.content p {
+    font-weight: normal;
+    padding: 4px;
+    margin: 0;
+}
+
+hr {
+    min-width: 90%;
+} */
+
+
+.activityItem {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: #fafafa;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+}
+
+.activityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 4px;
+}
+
+.action {
+  font-weight: 600;
+  color: #333;
+  text-transform: capitalize;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.details p {
+  margin: 2px 0;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+
+
