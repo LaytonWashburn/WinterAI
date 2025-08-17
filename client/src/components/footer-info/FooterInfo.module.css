@@ -1,0 +1,12 @@
+
+.footer {
+  max-width: inherit;
+  padding: 24px;
+  background-color: rgba(0, 0, 0, 0.85); /* semi-transparent black */
+  backdrop-filter: blur(8px);          /* blur content behind */
+  color: white;
+  text-align: center;
+  font-size: 0.875rem;
+  flex: 1;
+  display: grid;
+}

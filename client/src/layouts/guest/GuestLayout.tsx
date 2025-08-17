@@ -1,6 +1,7 @@
 
 import { Navbar } from "../../components/nav-bar/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
+import { FooterInfo } from "../../components/footer-info/FooterInfo";
 import styles from "./GuestLayout.module.css";
 
 
@@ -10,10 +11,15 @@ export const GuestLayout = () => {
     const isGuestLanding = location.pathname === "/";
     return (
         <>
-            <Navbar isGuest={isGuestLanding} />
-            <main id={styles.main}>
-                <Outlet />
-            </main>
+            <div
+                className={styles.mainWrapper}
+            >
+                <Navbar isGuest={isGuestLanding} />
+                <main id={styles.main}>
+                    <Outlet />
+                </main>
+            </div>
+            <FooterInfo />
         </>
     );
 }

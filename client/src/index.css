@@ -17,5 +17,5 @@ body {
 #root {
     display: flex;
     flex-direction: column;
-    max-width: inherit;
+    /* max-width: 100vh; */
 }

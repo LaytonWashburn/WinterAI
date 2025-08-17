@@ -4,3 +4,7 @@ main {
   min-width: 100%;
   /* overflow-y:scroll;      allow scrolling inside main area if needed */
 }
+
+.mainWrapper {
+  min-height: 100vh
+}
