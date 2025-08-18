@@ -1,0 +1,49 @@
+
+
+.main {
+    min-width: 100%;
+    padding-bottom: 8px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main hr {
+    width: 60%;
+}
+
+.main h5 {
+    margin: 0;
+}
+
+.testimonial {
+    display: flex;
+    font-weight: normal;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+
+.testimonialText {
+    box-sizing: border-box;
+    color: #333333;
+    padding: 4px;
+}
+
+.testimonialName {
+    font-size: large;
+    font-weight: normal; 
+}
+
+
+
+@media (min-width: 576px) {
+    .testimonial {
+        display: flex;
+        flex-direction: row;
+        font-size: x-large;
+    }
+
+    .testimonialName {
+        font-size: x-large;
+    }
+}

@@ -6,6 +6,10 @@ import { GuestLayout } from "../layouts/guest/GuestLayout";
 import { SignUpPage } from "../pages/signup/SignUp";
 import { SignInPage } from "../pages/signin/SignIn";
 import { ResumePage } from "../pages/features/resume/ResumePage";
+import { CareersPage as WinterAICareersPage } from "../pages/careers/CareersPage";
+import { AboutPage } from "../pages/about/AboutPage";
+import { ProfilePage } from "../pages/profile/ProfilePage";
+import { SettingsPage } from "../pages/settings/SettingsPage";
 import { HomeLayout } from "../layouts/home/HomeLayout";
 import { ServicesPage } from "../pages/services/ServicesPage";
 import { SearchPage } from "../features/search/SearchPage";
@@ -24,21 +28,15 @@ const guestRoutes = [
 // Define an array of your protected route configurations
 const protectedRoutes = [
   { path: "dashboard", element: <DashboardPage /> },
-  { 
-  path: "services", 
-  element: <ServicesPage />, 
-  },
-  {
-  path: "services/career",
-  element: <CareerPage />
-  },
-  {
-    path: "services/career/resume", 
-    element: <ResumePage/>
-  },
-  { path: "services/career/search", element: <SearchPage/>},
-  {path: "viewer", element: <DynamicModel/>},
-
+  { path: "services", element: <ServicesPage /> },
+  { path: "services/career", element: <CareerPage /> },
+  { path: "services/career/resume", element: <ResumePage/> },
+  { path: "services/career/search", element: <SearchPage/> },
+  { path: "viewer", element: <DynamicModel/> },
+  { path: "careers", element: <WinterAICareersPage /> },
+  { path: "about", element: <AboutPage /> },
+  { path: "profile", element: <ProfilePage /> },
+  { path: "settings", element: <SettingsPage /> }
 ];
 
 export const router = createBrowserRouter([

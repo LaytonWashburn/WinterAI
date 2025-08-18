@@ -62,11 +62,17 @@
 }
 
 @media (min-width: 578px) {
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .footerContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    
   }
 
   .section {

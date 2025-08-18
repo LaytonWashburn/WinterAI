@@ -54,8 +54,8 @@ export const FooterInfo = ({ needsBottomPixels = false }: FooterInfoProps) => {
                 >
                     <Link className={styles.sectionHeader}>Company</Link>
                     <Link className={styles.sectionLink}>Contact</Link>
-                    <Link className={styles.sectionLink}>About Us</Link>
-                    <Link className={styles.sectionLink}>Careers</Link>
+                    <Link className={styles.sectionLink} to={"/about/"}>About Us</Link>
+                    <Link className={styles.sectionLink} to={"/careers/"}>Careers</Link>
                     <Link className={styles.sectionLink}>Impact</Link>
                 </div>
             </div>
